@@ -1,0 +1,54 @@
+/**
+*
+* {{ properCase componentName }}
+*
+*/
+{{#if wantMemo}}
+import React, { memo } from 'react';
+{{else}}
+import * as React from 'react';
+{{/if}}
+import {View} from 'react-native';
+{{#if wantStyledComponents}}
+import styled from 'styled-components/native';
+{{/if}}
+{{#if wantTranslations}}
+import { useLocalization } from "src/locales";
+{{/if}}
+
+interface Props {}
+
+{{#if wantMemo}}
+export const {{ properCase componentName }} = memo((props: Props) => {
+{{else}}
+export function {{ properCase componentName }}(props: Props) {
+{{/if}}
+  {{#if wantTranslations}}
+  const { i18n } = useLocalization();
+  {{/if}}
+
+  return (
+  {{#if wantStyledComponents}}
+  <Container>
+  {{else}}
+  <View>
+  {{/if}}
+    {{#if wantTranslations}}
+    <Text> {i18n.t("welcome")} </Text>
+    {{/if}}
+  {{#if wantStyledComponents}}
+  </Container>
+  {{else}}
+  </View>
+  {{/if}}
+  );
+
+{{#if wantMemo}}
+});
+{{else}}
+};
+{{/if}}
+
+{{#if wantStyledComponents}}
+const Container = styled.View``;
+{{/if}}

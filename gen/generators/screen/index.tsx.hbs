@@ -1,0 +1,80 @@
+/**
+*
+* {{ properCase screenName }}
+*
+*/
+{{#if wantMemo}}
+import React, { memo } from 'react';
+{{else}}
+import * as React from 'react';
+{{/if}}
+import {Text, View} from 'react-native';
+import { RootTabScreenProps } from "src/utils/types/types";
+{{#if wantStyledComponents}}
+import styled from 'styled-components/native';
+{{/if}}
+{{#if wantTranslations}}
+import { useLocalization } from "src/locales";
+{{/if}}
+
+interface Props {}
+
+{{#if wantMemo}}
+export const {{ properCase screenName }} = memo(({
+  navigation,
+}: RootTabScreenProps<"{{ properCase screenName }}">) => {
+{{else}}
+export function {{ properCase screenName }}({
+  navigation,
+}: RootTabScreenProps< {{ properCase screenName }} >) {
+{{/if}}
+  {{#if wantTranslations}}
+  const { i18n } = useLocalization();
+  {{/if}}
+
+  return (
+  {{#if wantStyledComponents}}
+  <Container>
+  {{else}}
+  <View  style={ {
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      } } >
+  {{/if}}
+    {{#if wantTranslations}}
+    <Text> {i18n.t("welcome")} </Text>
+    {{/if}}
+  {{#if wantStyledComponents}}
+  </Container>
+  {{else}}
+  <Text
+    style={ {
+      fontFamily: "Jost",
+      fontWeight: "600",
+      fontSize: 40,
+    } }
+  >
+    {{ properCase screenName }} Screen
+  </Text>
+  </View>
+  {{/if}}
+  );
+
+{{#if wantMemo}}
+});
+{{else}}
+};
+{{/if}}
+
+{{#if wantStyledComponents}}
+const Container = styled.View`
+height:'100%';
+width:'100%';
+display:'flex';
+justifyContent: 'center';
+alignItems: 'center';
+`;
+{{/if}}
