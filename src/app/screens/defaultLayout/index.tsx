@@ -13,7 +13,6 @@ export default function DefaultLayout() {
   const theme = useSelector(selectTheme);
   const isLoadingComplete = useCachedResources();
   const { colorMode } = useTheme();
-  console.log(theme);
   if (!isLoadingComplete) {
     return null;
   } else {

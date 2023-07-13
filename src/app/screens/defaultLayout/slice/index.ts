@@ -1,7 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 import { Appearance, ColorSchemeName } from "react-native";
 import { createSlice } from "src/utils/@reduxjs/toolkit";
-import { useInjectReducer, useInjectSaga } from "src/utils/redux-injectors";
+import { useInjectReducer } from "src/utils/redux-injectors";
 import { lightTheme } from "src/utils/theme/lightTheme";
 import { DefaultTheme } from "styled-components/native";
 import { defaultLayoutSaga } from "./saga";
@@ -29,7 +29,6 @@ export const { actions: defaultLayoutActions } = slice;
 
 export const useDefaultLayoutSlice = () => {
   useInjectReducer({ key: slice.name, reducer: slice.reducer });
-  useInjectSaga({ key: slice.name, saga: defaultLayoutSaga });
   return { actions: slice.actions };
 };
 

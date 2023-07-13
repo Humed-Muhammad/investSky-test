@@ -22,9 +22,6 @@ export const { actions: {{ camelCase sliceName }}Actions } = slice;
 
 export const use{{ properCase sliceName }}Slice = () => {
   useInjectReducer({ key: slice.name, reducer: slice.reducer });
-  {{#if wantSaga}}
-  useInjectSaga({ key: slice.name, saga: {{ camelCase sliceName }}Saga });
-  {{/if}}
   return { actions: slice.actions };
 };
 

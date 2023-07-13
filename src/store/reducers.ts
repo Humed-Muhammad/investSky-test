@@ -3,10 +3,10 @@
  */
 
 import { combineReducers } from "@reduxjs/toolkit";
+import { api } from "./service";
 // import { RootState } from 'types';
 
 import { InjectedReducersType } from "src/utils/types/injector-typings";
-
 /**
  * Merges the main reducer with the router state and dynamically injected reducers
  */
@@ -16,6 +16,7 @@ export function createReducer(injectedReducers: InjectedReducersType = {}) {
     return (state: any) => state;
   }
   return combineReducers({
+    [api.reducerPath]: api.reducer,
     ...injectedReducers,
   });
 }

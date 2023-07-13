@@ -101,7 +101,7 @@ function BottomTabNavigator() {
               })}
             >
               <FontAwesome
-                name="info-circle"
+                name="bell-o"
                 size={25}
                 color={Colors[colorScheme].text}
                 style={{ marginRight: 15 }}
