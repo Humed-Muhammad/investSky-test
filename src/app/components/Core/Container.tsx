@@ -13,6 +13,9 @@ import {
 import { BoxProps } from "./types";
 
 export const Container = styled.View<BoxProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   ${compose(
     color,
     layout,

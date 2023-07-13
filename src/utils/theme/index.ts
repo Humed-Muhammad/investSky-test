@@ -4,11 +4,15 @@ import { Appearance, ColorSchemeName } from "react-native";
 import { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectThemeMode } from "src/app/screens/defaultLayout/slice/selectors";
+import {
+  selectTheme,
+  selectThemeMode,
+} from "src/app/screens/defaultLayout/slice/selectors";
 import { useDefaultLayoutSlice } from "src/app/screens/defaultLayout/slice";
 
 export const useTheme = () => {
   const themeMode = useSelector(selectThemeMode);
+  const theme = useSelector(selectTheme);
   const dispatch = useDispatch();
   const { actions } = useDefaultLayoutSlice();
 
@@ -29,5 +33,5 @@ export const useTheme = () => {
     });
   }, [themeMode, dispatch]);
 
-  return { colorMode };
+  return { colorMode, theme };
 };

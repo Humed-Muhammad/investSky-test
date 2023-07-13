@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, Octicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   NavigationContainer,
@@ -29,6 +29,7 @@ import {
   RootTabScreenProps,
 } from "src/utils/types/types";
 import LinkingConfiguration from "./LinkingConfiguration";
+import { useTheme } from "src/utils/theme";
 
 export default function Navigation({
   colorScheme,
@@ -80,19 +81,23 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 function BottomTabNavigator() {
   const colorScheme = useColorScheme();
 
+  const { theme } = useTheme();
+
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Markets"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}
     >
       <BottomTab.Screen
-        name="TabOne"
+        name="Markets"
         component={TabOneScreen}
-        options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
-          title: "Tab One",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        options={({ navigation }: RootTabScreenProps<"Markets">) => ({
+          title: "",
+          tabBarIcon: ({ color }) => {
+            return <Octicons name="arrow-switch" size={20} color={color} />;
+          },
           headerRight: () => (
             <Pressable
               onPress={() => navigation.navigate("Modal")}
@@ -102,12 +107,31 @@ function BottomTabNavigator() {
             >
               <FontAwesome
                 name="bell-o"
-                size={25}
-                color={Colors[colorScheme].text}
+                size={20}
+                color={theme?.colors.white}
                 style={{ marginRight: 15 }}
               />
             </Pressable>
           ),
+          headerLeft: () => (
+            <Pressable
+              onPress={() => navigation.navigate("Modal")}
+              style={({ pressed }) => ({
+                opacity: pressed ? 0.5 : 1,
+              })}
+            >
+              <FontAwesome
+                name="align-left"
+                size={20}
+                color={theme?.colors.white}
+                style={{ marginLeft: 15 }}
+              />
+            </Pressable>
+          ),
+          headerStyle: {
+            backgroundColor: theme?.colors.primary,
+          },
+          headerTintColor: theme?.colors.white,
         })}
       />
       <BottomTab.Screen
@@ -133,5 +157,5 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>["name"];
   color: string;
 }) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome size={20} style={{ marginBottom: -3 }} {...props} />;
 }
