@@ -10,14 +10,14 @@
  */
 export const Colors = {
   // Example colors:
-  transparent: "rgba(0,0,0,0)",
-  inputBackground: "#FFFFFF",
-  white: "#ffffff",
-  text: "#212529",
-  primary: "#3366FF",
-  success: "#74d815",
-  error: "#FF3838",
-  warning: "#F5CE45",
+  transparent: 'rgba(0,0,0,0)',
+  inputBackground: '#FFFFFF',
+  white: '#ffffff',
+  text: '#212529',
+  primary: '#3366FF',
+  success: '#74d815',
+  error: '#FF3838',
+  warning: '#F5CE45',
 };
 
 export const NavigationColors = {
@@ -45,6 +45,11 @@ export const MetricsSizes = {
   small,
   regular,
   large,
+};
+
+export const fonts = {
+  poppins: 'Poppins',
+  jost: 'Jost',
 };
 
 export default {
