@@ -81,11 +81,6 @@ declare module 'styled-components/native' {
     fonts: {
       poppins: string;
       jost: string;
-      mulish: string;
-      nunito: string;
-      josefinSans: string;
-      josefinSlab: string;
-      montserrat: string;
     };
     borders: Array<string | number>;
     radii: {
