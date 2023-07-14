@@ -1,7 +1,7 @@
 // styled.d.ts
-import "styled-components/native";
+import 'styled-components/native';
 
-declare module "styled-components/native" {
+declare module 'styled-components/native' {
   export interface DefaultTheme {
     sizes: {
       10: number;
@@ -64,8 +64,8 @@ declare module "styled-components/native" {
       md: number;
       lg: number;
       xl: number;
-      "2xl": number;
-      "3xl": number;
+      '2xl': number;
+      '3xl': number;
     };
     fontWeights: {
       100: number;
@@ -120,6 +120,14 @@ declare module "styled-components/native" {
       md: string;
       lg: string;
       xl: string;
+    };
+    headings: {
+      h1: string;
+      h2: string;
+      h3: string;
+      h4: string;
+      h5: string;
+      h6: string;
     };
   }
 }
