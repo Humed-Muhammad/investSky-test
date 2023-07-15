@@ -10,9 +10,9 @@ import {
   zIndex,
   position,
 } from 'styled-system';
-import { ButtonProps } from './types';
 import { colors } from 'src/utils/constants/themeColors';
 import { lightTheme } from 'src/utils/theme/lightTheme';
+import { ButtonProps } from './types';
 
 export const Input = styled.TextInput<ButtonProps>`
   background-color: ${colors.inputBg};

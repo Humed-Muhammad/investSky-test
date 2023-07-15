@@ -21,6 +21,7 @@ import NotFoundScreen from 'src/app/screens/NotFoundScreen';
 import Markets from 'src/app/screens/Markets';
 import TabTwoScreen from 'src/app/screens/TabTwoScreen';
 
+import { Login } from 'src/app/screens/Login/Loadable';
 // [IMPORT NEW COMPONENT SCREEN ABOVE] < Needed for importing screen
 
 import {
@@ -28,23 +29,8 @@ import {
   RootTabParamList,
   RootTabScreenProps,
 } from 'src/utils/types/types';
-import LinkingConfiguration from './LinkingConfiguration';
 import { useTheme } from 'src/utils/theme';
-
-export default function Navigation({
-  colorScheme,
-}: {
-  colorScheme: ColorSchemeName;
-}) {
-  return (
-    <NavigationContainer
-      linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
-    >
-      <RootNavigator />
-    </NavigationContainer>
-  );
-}
+import LinkingConfiguration from './LinkingConfiguration';
 
 /**
  * A root stack navigator is often used for displaying modals on top of all other content.
@@ -52,24 +38,14 @@ export default function Navigation({
  */
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-function RootNavigator() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Root"
-        component={BottomTabNavigator}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name="NotFound"
-        component={NotFoundScreen}
-        options={{ title: 'Oops!' }}
-      />
-      <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
-      </Stack.Group>
-    </Stack.Navigator>
-  );
+/**
+ * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
+ */
+function TabBarIcon(props: {
+  name: React.ComponentProps<typeof FontAwesome>['name'];
+  color: string;
+}) {
+  return <FontAwesome size={20} style={{ marginBottom: -3 }} {...props} />;
 }
 
 /**
@@ -146,19 +122,52 @@ function BottomTabNavigator() {
         }}
       />
 
-      {/* // [INSERT NEW SCREEN COMPONENT ABOVE] < Needed for generating screen */}
+<BottomTab.Screen
+  name="Login"
+  component={ Login }
+  options={
+    {title: "Login",
+    tabBarIcon: ({color}) => <TabBarIcon name="code" color={color} />}
+  }
+/>
+{/* // [INSERT NEW SCREEN COMPONENT ABOVE] < Needed for generating screen */}
 
-      {/**@End  */}
+      {/** @End  */}
     </BottomTab.Navigator>
   );
 }
 
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
+function RootNavigator() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Root"
+        component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="NotFound"
+        component={NotFoundScreen}
+        options={{ title: 'Oops!' }}
+      />
+      <Stack.Group screenOptions={{ presentation: 'modal' }}>
+        <Stack.Screen name="Modal" component={ModalScreen} />
+      </Stack.Group>
+    </Stack.Navigator>
+  );
+}
+
+export default function Navigation({
+  colorScheme,
+}: {
+  colorScheme: ColorSchemeName;
 }) {
-  return <FontAwesome size={20} style={{ marginBottom: -3 }} {...props} />;
+  return (
+    <NavigationContainer
+      linking={LinkingConfiguration}
+      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}
+    >
+      <RootNavigator />
+    </NavigationContainer>
+  );
 }

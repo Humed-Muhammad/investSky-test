@@ -1,1 +1,1 @@
-export const API_ROUTE = process.env.API_ROUTE;
+export const { EXPO_PUBLIC_API_URL } = process.env;

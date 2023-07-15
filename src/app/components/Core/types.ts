@@ -30,7 +30,7 @@ import {
   BackgroundSizeProps,
   BorderRadiusProps,
   OpacityProps,
-} from "styled-system";
+} from 'styled-system';
 
 export interface ButtonProps
   extends ColorProps,
@@ -41,16 +41,16 @@ export interface ButtonProps
     BorderProps,
     ZIndexProps {
   variant?:
-    | "primary"
-    | "secondary"
-    | "tertiary"
-    | "outlined"
-    | "status"
-    | "padded"
-    | "paddedOutline"
-    | "ghost"
-    | "normal"
-    | "rightOutlinedLeaf";
+    | 'primary'
+    | 'secondary'
+    | 'tertiary'
+    | 'outlined'
+    | 'status'
+    | 'padded'
+    | 'paddedOutline'
+    | 'ghost'
+    | 'normal'
+    | 'rightOutlinedLeaf';
   loading?: boolean;
   children?: any;
   onClick?: () => void;
@@ -99,7 +99,7 @@ export interface TextProps
     PositionProps,
     MarginProps,
     FontFamilyProps {
-  variant?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "base" | "ellipsis";
+  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'base' | 'ellipsis';
   textOverflow?: string;
   cursor?: string;
 }
@@ -114,7 +114,7 @@ export interface InputProps
     BorderProps,
     PositionProps,
     BorderRadiusProps {
-  variant?: "outlined" | "filled";
+  variant?: 'outlined' | 'filled';
   valid?: boolean;
   tabIndex?: number;
 }
@@ -135,7 +135,7 @@ export interface ListProps
     FlexGrowProps,
     JustifyContentProps,
     AlignItemsProps {
-  type?: "horizontal" | "vertical" | "spread" | any[];
+  type?: 'horizontal' | 'vertical' | 'spread' | any[];
   transition?: string;
   transform?: string;
 }
@@ -161,5 +161,5 @@ export interface CardProps
     BorderProps,
     ColorProps,
     AlignItemsProps {
-  variant?: "default" | "rightBended" | "dense" | "medium" | "radiant";
+  variant?: 'default' | 'rightBended' | 'dense' | 'medium' | 'radiant';
 }

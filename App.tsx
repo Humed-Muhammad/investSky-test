@@ -1,10 +1,10 @@
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import React from "react";
-import useCachedResources from "src/utils/hooks/useCachedResources";
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import React from 'react';
+import useCachedResources from 'src/utils/hooks/useCachedResources';
 
-import { Provider } from "react-redux";
-import { configureAppStore } from "src/store/configureStore";
-import DefaultLayout from "src/app/screens/defaultLayout";
+import { Provider } from 'react-redux';
+import { configureAppStore } from 'src/store/configureStore';
+import DefaultLayout from 'src/app/screens/defaultLayout';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -12,13 +12,12 @@ export default function App() {
 
   if (!isLoadingComplete) {
     return null;
-  } else {
-    return (
-      <SafeAreaProvider>
-        <Provider store={store}>
-          <DefaultLayout />
-        </Provider>
-      </SafeAreaProvider>
-    );
   }
+  return (
+    <SafeAreaProvider>
+      <Provider store={store}>
+        <DefaultLayout />
+      </Provider>
+    </SafeAreaProvider>
+  );
 }

@@ -10,8 +10,8 @@ import {
   zIndex,
   position,
 } from 'styled-system';
-import { TextProps } from './types';
 import { lightTheme } from 'src/utils/theme/lightTheme';
+import { TextProps } from './types';
 
 const variants = {
   h1: {

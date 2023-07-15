@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled from 'styled-components/native';
 import {
   color,
   compose,
@@ -9,8 +9,8 @@ import {
   border,
   zIndex,
   position,
-} from "styled-system";
-import { ButtonProps } from "./types";
+} from 'styled-system';
+import { ButtonProps } from './types';
 
 export const Button = styled.TouchableOpacity<ButtonProps>`
   ${compose(
@@ -21,6 +21,6 @@ export const Button = styled.TouchableOpacity<ButtonProps>`
     variant,
     border,
     zIndex,
-    position
+    position,
   )}
 `;

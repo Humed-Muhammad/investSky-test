@@ -1,17 +1,17 @@
-import * as Localization from "expo-localization";
-import { I18n } from "i18n-js";
+import * as Localization from 'expo-localization';
+import { I18n } from 'i18n-js';
 // import { useSelector } from "react-redux";
 
 interface ILocalizationTypes {
-  lang: "ja" | "en" | "eh";
+  lang: 'ja' | 'en' | 'eh';
 }
 // Set the key-value pairs for the different languages you want to support.
 export const useLocalization = (data?: ILocalizationTypes) => {
   // const getDefaultLanguage = useSelector(selectDefaultLanguage)
 
   const translations = {
-    en: { welcome: "Hello", name: "Charlie" },
-    ja: { welcome: "こんにちは" },
+    en: { welcome: 'Hello', name: 'Charlie' },
+    ja: { welcome: 'こんにちは' },
   };
   const i18n = new I18n(translations);
 
