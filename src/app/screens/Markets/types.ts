@@ -6,3 +6,5 @@ export interface ICategoryTypes {
   name: string;
   updated: string;
 }
+
+export type ReturnType = { items: ICategoryTypes[] };

@@ -3,11 +3,11 @@ import React, { useEffect, useState, useRef } from 'react';
 import { FlatList, SafeAreaView, Dimensions, Animated } from 'react-native';
 import { colors } from 'src/utils/constants/themeColors';
 import { Container, Text } from '../Core';
-import { useFetchCategoriesQuery } from '../../screens/Markets/service';
+import { useMarketList } from '../../screens/Markets/service';
 import { ICategoryTypes } from '../../screens/Markets/types';
 
 export const MarketTypeList = () => {
-  const { data } = useFetchCategoriesQuery('category/records');
+  const { data } = useMarketList();
   const [activeItem, setActiveItem] = useState<string | undefined>();
   const translateX = useRef(
     new Animated.Value(Dimensions.get('window').height),
