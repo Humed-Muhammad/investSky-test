@@ -6,18 +6,16 @@ import Navigation from 'src/navigation';
 import { ThemeProvider } from 'styled-components/native';
 
 import { useTheme } from 'src/utils/theme';
-import { useSelector } from 'react-redux';
-import { selectTheme } from './slice/selectors';
+import { lightTheme } from 'src/utils/theme/lightTheme';
 
 export default function DefaultLayout() {
-  const theme = useSelector(selectTheme);
   const isLoadingComplete = useCachedResources();
-  const { colorMode } = useTheme();
+  const { colorMode, theme } = useTheme();
   if (!isLoadingComplete) {
     return null;
   }
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme || lightTheme}>
       <Navigation colorScheme={colorMode} />
       <StatusBar />
     </ThemeProvider>
