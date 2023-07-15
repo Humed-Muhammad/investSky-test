@@ -1,14 +1,19 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import { FlatList, SafeAreaView, Dimensions, Animated } from 'react-native';
 import { colors } from 'src/utils/constants/themeColors';
 import { Container, Text } from '../Core';
 import { useMarketList } from '../../screens/Markets/service';
-import { ICategoryTypes } from '../../screens/Markets/types';
+import { ICategoryTypes, IStocksConfig } from '../../screens/Markets/types';
 
-export const MarketTypeList = () => {
+interface Props {
+  setStocksConfig: React.Dispatch<React.SetStateAction<IStocksConfig>>;
+  stocksConfig: IStocksConfig;
+}
+
+export const MarketTypeList = ({ setStocksConfig, stocksConfig }: Props) => {
   const { data } = useMarketList();
-  const [activeItem, setActiveItem] = useState<string | undefined>();
+
   const translateX = useRef(
     new Animated.Value(Dimensions.get('window').height),
   ).current;
@@ -18,12 +23,18 @@ export const MarketTypeList = () => {
       duration: 1000,
       useNativeDriver: true,
     }).start();
-    setActiveItem(data?.[0]?.id);
+    setStocksConfig({
+      categoryId: data?.[0]?.id as string,
+      fetch: true,
+    });
   }, [data]);
 
   const getItem = (item: ICategoryTypes) => {
     // Function for click on an item
-    setActiveItem(item.id);
+    setStocksConfig({
+      categoryId: item.id,
+      fetch: true,
+    });
   };
 
   const ItemView = ({ item }: { item: ICategoryTypes }) => {
@@ -31,8 +42,10 @@ export const MarketTypeList = () => {
       // Single Comes here which will be repeatative for the FlatListItems
       <Animated.View style={{ transform: [{ translateX }] }}>
         <Text
-          color={activeItem === item.id ? 'white' : colors.gray[400]}
-          fontWeight={activeItem === item.id ? 'bold' : 'normal'}
+          color={
+            stocksConfig.categoryId === item.id ? 'white' : colors.gray[400]
+          }
+          fontWeight={stocksConfig.categoryId === item.id ? 'bold' : 'normal'}
           mx={2}
           onPress={() => getItem(item)}
         >
