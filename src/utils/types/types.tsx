@@ -18,6 +18,7 @@ declare global {
 
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
+  Login: undefined;
   Modal: undefined;
   NotFound: undefined;
 };
@@ -29,8 +30,7 @@ export type RootTabParamList = {
   Markets: undefined;
   TabTwo: undefined;
   Login?: undefined;
-  Login?: undefined;
-  Login?: undefined;
+
   // [INSERT NEW SCREEN KEY ABOVE] < Needed for generating screen
 };
 

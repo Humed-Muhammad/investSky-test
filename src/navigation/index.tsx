@@ -21,7 +21,6 @@ import NotFoundScreen from 'src/app/screens/NotFoundScreen';
 import Markets from 'src/app/screens/Markets';
 import TabTwoScreen from 'src/app/screens/TabTwoScreen';
 
-import { Login } from 'src/app/screens/Login/Loadable';
 // [IMPORT NEW COMPONENT SCREEN ABOVE] < Needed for importing screen
 
 import {
@@ -122,15 +121,15 @@ function BottomTabNavigator() {
         }}
       />
 
-<BottomTab.Screen
-  name="Login"
-  component={ Login }
-  options={
-    {title: "Login",
-    tabBarIcon: ({color}) => <TabBarIcon name="code" color={color} />}
-  }
-/>
-{/* // [INSERT NEW SCREEN COMPONENT ABOVE] < Needed for generating screen */}
+      {/* <BottomTab.Screen
+        name="Login"
+        component={Login}
+        options={{
+          title: 'Login',
+          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+        }}
+      /> */}
+      {/* // [INSERT NEW SCREEN COMPONENT ABOVE] < Needed for generating screen */}
 
       {/** @End  */}
     </BottomTab.Navigator>
@@ -140,6 +139,11 @@ function BottomTabNavigator() {
 function RootNavigator() {
   return (
     <Stack.Navigator>
+      {/* <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{ headerShown: false }}
+      /> */}
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}

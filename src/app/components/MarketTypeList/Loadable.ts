@@ -6,7 +6,7 @@
 
 import { lazyLoad } from 'src/utils/loadable';
 
-export const Login = lazyLoad(
+export const MarketTypeList = lazyLoad(
   () => import('./index'),
-  module => module.Login,
+  module => module.MarketTypeList,
 );

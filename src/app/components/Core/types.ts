@@ -39,18 +39,16 @@ export interface ButtonProps
     SpaceProps,
     PositionProps,
     BorderProps,
-    ZIndexProps {
-  variant?:
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'outlined'
-    | 'status'
-    | 'padded'
-    | 'paddedOutline'
-    | 'ghost'
-    | 'normal'
-    | 'rightOutlinedLeaf';
+    ZIndexProps,
+    FlexBasisProps,
+    FlexGrowProps,
+    FlexProps,
+    JustifyContentProps,
+    AlignItemsProps,
+    FlexDirectionProps,
+    FlexboxProps,
+    TypographyProps {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'normal';
   loading?: boolean;
   children?: any;
   onClick?: () => void;

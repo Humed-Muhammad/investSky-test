@@ -1,1 +1,1 @@
-export const { EXPO_PUBLIC_API_URL } = process.env;
+export const API_URL = 'https://db.filezillow.com/api/collections/';

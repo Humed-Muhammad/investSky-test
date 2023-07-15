@@ -26,7 +26,7 @@ export const {{ properCase screenName }} = memo(({
 {{else}}
 export function {{ properCase screenName }}({
   navigation,
-}: RootTabScreenProps< {{ properCase screenName }} >) {
+}: RootTabScreenProps< '{{ properCase screenName }}' >) {
 {{/if}}
   {{#if wantTranslations}}
   const { i18n } = useLocalization();

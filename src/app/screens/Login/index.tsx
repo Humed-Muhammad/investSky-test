@@ -1,37 +1,49 @@
 /**
-*
-* Login
-*
-*/
+ *
+ * Login
+ *
+ */
 import * as React from 'react';
-import {Text, View} from 'react-native';
-import { RootTabScreenProps } from "src/utils/types/types";
+import { Button, Container, Input, Text } from 'src/app/components/Core';
+import { RootTabScreenProps } from 'src/utils/types/types';
 
-interface Props {}
-
-export function Login({
-  navigation,
-}: RootTabScreenProps< Login >) {
-
+export function Login({ navigation }: RootTabScreenProps<'Login'>) {
   return (
-  <View  style={ {
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      } } >
-  <Text
-    style={ {
-      fontFamily: "Jost",
-      fontWeight: "600",
-      fontSize: 40,
-    } }
-  >
-    Login Screen
-  </Text>
-  </View>
+    <Container bg="white" height="100%">
+      <Text
+        bg="primary"
+        color="white"
+        p={2}
+        borderRadius={2}
+        justifySelf="flex-start"
+        my={2}
+        variant="h1"
+      >
+        Invest Sky Login
+      </Text>
+      <Text my={2} variant="h3">
+        Welcome back
+      </Text>
+      <Input
+        placeholder="Email"
+        bg="gray.100"
+        border={1}
+        borderColor="gray.300"
+        my={2}
+      />
+      <Input
+        placeholder="Password"
+        secureTextEntry
+        bg="gray.100"
+        border={1}
+        borderColor="gray.300"
+        mb={2}
+      />
+      <Text mb={2}>Don't have an account yet?</Text>
+
+      <Button width="300px" variant="secondary" color="white">
+        Login
+      </Button>
+    </Container>
   );
-
-};
-
+}
