@@ -4,7 +4,7 @@
 
 import { combineReducers } from '@reduxjs/toolkit';
 import { InjectedReducersType } from 'src/utils/types/injector-typings';
-import { api } from './services';
+
 // import { RootState } from 'types';
 
 /**
@@ -16,7 +16,6 @@ export function createReducer(injectedReducers: InjectedReducersType = {}) {
     return (state: any) => state;
   }
   return combineReducers({
-    [api.reducerPath]: api.reducer,
     ...injectedReducers,
   });
 }
