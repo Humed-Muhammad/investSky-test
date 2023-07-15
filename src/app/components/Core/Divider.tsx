@@ -10,6 +10,7 @@ import {
   zIndex,
   position,
 } from 'styled-system';
+import { colors } from 'src/utils/constants/themeColors';
 import { BoxProps } from './types';
 
 interface DividerProps extends BoxProps {
@@ -18,9 +19,9 @@ interface DividerProps extends BoxProps {
 
 export const Divider = styled.View<DividerProps>`
   ${props => `
-
-    height: ${props.variant === 'horizontal' ? 0.5 : props.height || '100%'}
-    width: ${props.variant === 'vertical' ? 0.5 : props.width || '100%'}
+    background-color: ${String(props.color) || String(colors.gray[400])};
+    height: ${props.variant === 'horizontal' ? '1px' : props.height || '100%'};
+    width: ${props.variant === 'vertical' ? '1px' : props.width || '100%'};
 
     `}
   ${compose(
