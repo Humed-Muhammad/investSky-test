@@ -15,27 +15,21 @@ import { lightTheme } from 'src/utils/theme/lightTheme';
 
 const variants = {
   h1: {
-    fontWeight: 'bold',
     fontSize: lightTheme.headings.h1,
   },
   h2: {
-    fontWeight: 'bold',
     fontSize: lightTheme.headings.h2,
   },
   h3: {
-    fontWeight: 'bold',
     fontSize: lightTheme.headings.h3,
   },
   h4: {
-    fontWeight: 'bold',
     fontSize: lightTheme.headings.h4,
   },
   h5: {
-    fontWeight: 'bold',
     fontSize: lightTheme.headings.h5,
   },
   h6: {
-    fontWeight: 'bold',
     fontSize: lightTheme.headings.h6,
   },
 };
