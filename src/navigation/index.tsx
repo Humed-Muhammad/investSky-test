@@ -30,7 +30,8 @@ import {
   RootTabScreenProps,
 } from 'src/utils/types/types';
 import { useTheme } from 'src/utils/theme';
-import { Container } from 'src/app/components/Core';
+import { Container, Flex } from 'src/app/components/Core';
+import { ThemeController } from 'src/app/components/LightDarkThem';
 import LinkingConfiguration from './LinkingConfiguration';
 
 /**
@@ -80,7 +81,7 @@ function BottomTabNavigator() {
           headerLeft: () => (
             <Container
               borderWidth={1}
-              borderColor="gray.400"
+              borderColor={theme.colors.text}
               marginLeft={4}
               marginTop={5}
               borderRadius={18}
@@ -97,14 +98,14 @@ function BottomTabNavigator() {
                 <FontAwesome
                   name="angle-left"
                   size={20}
-                  color={theme?.colors.gray[900]}
+                  color={theme?.colors.text}
                   // style={{ marginLeft: 15 }}
                 />
               </Pressable>
             </Container>
           ),
           headerStyle: {
-            backgroundColor: 'white',
+            backgroundColor: theme.colors.background,
             shadowColor: 'transparent', // this covers iOS
             elevation: 0, // this covers Android
           },
@@ -121,19 +122,22 @@ function BottomTabNavigator() {
             return <Octicons name="arrow-switch" size={20} color={color} />;
           },
           headerRight: () => (
-            <Pressable
-              onPress={() => navigation.navigate('Notification')}
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome
-                name="bell-o"
-                size={20}
-                color={theme?.colors.white}
-                style={{ marginRight: 15 }}
-              />
-            </Pressable>
+            <Flex flexDirection="row">
+              <Pressable
+                onPress={() => navigation.navigate('Notification')}
+                style={({ pressed }) => ({
+                  opacity: pressed ? 0.5 : 1,
+                })}
+              >
+                <FontAwesome
+                  name="bell-o"
+                  size={20}
+                  color={theme?.colors.white}
+                  style={{ marginRight: 15 }}
+                />
+              </Pressable>
+              <ThemeController />
+            </Flex>
           ),
           headerLeft: () => (
             <Pressable

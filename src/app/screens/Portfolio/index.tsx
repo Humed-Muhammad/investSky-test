@@ -33,9 +33,9 @@ export function Portfolio() {
     return null;
   }
   return (
-    <Flex pt={4} bg="white" height="100%">
+    <Flex pt={4} bg="background" height="100%">
       <Flex px={4}>
-        <Text fontFamily="Poppins_700Bold" variant="h1">
+        <Text color="text" fontFamily="Poppins_700Bold" variant="h1">
           {currencyFormat(currentStock?.currentPrice || 0)}
         </Text>
 

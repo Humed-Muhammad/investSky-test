@@ -2,10 +2,12 @@ import React from 'react';
 import { useAppSelector } from 'src/utils/hooks/redux';
 import { selectPortfolio } from 'src/app/screens/Portfolio/slice/selectors';
 import { currencyFormat } from 'src/utils/utilityFunctions';
+import { useTheme } from 'src/utils/theme';
 import { Box, Button, Container, Flex, Text } from '../Core';
 
 export const StockDetail = () => {
   const currentStock = useAppSelector(selectPortfolio);
+  const { colorMode } = useTheme();
   return (
     <Container p={4}>
       <Flex
@@ -15,10 +17,12 @@ export const StockDetail = () => {
         width="100%"
       >
         <Box>
-          <Text variant="h5">Close Price</Text>
+          <Text color="text" variant="h5">
+            Close Price
+          </Text>
         </Box>
         <Box>
-          <Text fontWeight="bold" variant="h4">
+          <Text fontWeight="bold" color="text" variant="h4">
             {currencyFormat(currentStock?.closePrice || 0)}
           </Text>
         </Box>
@@ -30,10 +34,12 @@ export const StockDetail = () => {
         width="100%"
       >
         <Box>
-          <Text variant="h5">Last Trade Price</Text>
+          <Text color="text" variant="h5">
+            Last Trade Price
+          </Text>
         </Box>
         <Box>
-          <Text fontWeight="bold" variant="h4">
+          <Text fontWeight="bold" color="text" variant="h4">
             {currencyFormat(currentStock?.lastTradePrice || 0)}
           </Text>
         </Box>
@@ -45,10 +51,12 @@ export const StockDetail = () => {
         width="100%"
       >
         <Box>
-          <Text variant="h5">Outstanding</Text>
+          <Text color="text" variant="h5">
+            Outstanding
+          </Text>
         </Box>
         <Box>
-          <Text fontWeight="bold" variant="h4">
+          <Text fontWeight="bold" color="text" variant="h4">
             {currencyFormat(currentStock?.outstandingPrice || 0)}
           </Text>
         </Box>
@@ -60,10 +68,12 @@ export const StockDetail = () => {
         width="100%"
       >
         <Box>
-          <Text variant="h5">Market Value</Text>
+          <Text color="text" variant="h5">
+            Market Value
+          </Text>
         </Box>
         <Box>
-          <Text fontWeight="bold" variant="h4">
+          <Text fontWeight="bold" color="text" variant="h4">
             {currencyFormat(currentStock?.marketValue || 0)}
           </Text>
         </Box>
@@ -72,7 +82,7 @@ export const StockDetail = () => {
         style={({ pressed }) => ({
           opacity: pressed ? 0.7 : 1,
         })}
-        variant="secondary"
+        variant={colorMode === 'light' ? 'secondary' : 'primary'}
         width="100%"
         mt={3}
       >

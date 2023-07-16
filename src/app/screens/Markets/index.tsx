@@ -1,4 +1,3 @@
-import { colors } from 'src/utils/constants/themeColors';
 import { useFonts, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useState } from 'react';
@@ -43,7 +42,7 @@ export function Markets() {
   }
 
   return (
-    <Flex bg="white" width="100%" height="100%">
+    <Flex bg="background" width="100%" height="100%">
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         enabled={false}
@@ -60,7 +59,7 @@ export function Markets() {
             <Flex
               justifyContent="space-between"
               p={3}
-              bg={colors.primary}
+              bg="primary"
               width="100%"
               height={220}
               zIndex={1}

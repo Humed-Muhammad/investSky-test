@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useStockSearch } from 'src/app/service';
 import { ActivityIndicator, ScrollView } from 'react-native';
+import { useTheme } from 'src/utils/theme';
 import { Box, Container, Input, Text } from '../Core';
 import { StocksList } from '../StocksList/Loadable';
 
 export const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
-
+  const { colorMode } = useTheme();
   const { data, isLoading } = useStockSearch(searchTerm);
 
   return (
@@ -41,11 +42,12 @@ export const Search = () => {
           position="absolute"
           width="100%"
           top={55}
-          bg="white"
+          bg="background"
         >
           <ScrollView
             style={{
               width: '100%',
+              backgroundColor: colorMode === 'light' ? 'white' : 'black',
             }}
           >
             {data?.items?.length ? <StocksList data={data!} /> : null}

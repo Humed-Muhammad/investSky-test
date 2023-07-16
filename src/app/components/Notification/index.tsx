@@ -11,7 +11,9 @@ export function Notification() {
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
       <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
-      <Text variant="h2">No Recent Notification</Text>
+      <Text color="text" variant="h2">
+        No Recent Notification
+      </Text>
     </Container>
   );
 }

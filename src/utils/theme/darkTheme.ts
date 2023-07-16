@@ -7,7 +7,7 @@ export const darkTheme: DefaultTheme = {
     ...lightTheme.colors,
     text: '#FFF',
     background: '#000',
-    primary: '#6690FF',
+    primary: '#000',
     secondary: '#F48675',
     success: '#C0EF42',
   },
