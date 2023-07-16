@@ -4,6 +4,10 @@
 
 This boilerplate is  Created By expo based react native boilerplate and template generator.
 
+The owner of the boilerplate [Humed Muhammad](https://github.com/Humed-Muhammad)
+
+More info on the boilerplate [Setup-Expo npm Package](https://www.npmjs.com/package/setup-expo)
+
 It has some scaffolding using generators to help you speed up your development and come with pre configure features listed below:-
 
 # Features
