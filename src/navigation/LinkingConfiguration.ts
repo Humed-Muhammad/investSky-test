@@ -39,7 +39,7 @@ const linking: LinkingOptions<RootStackParamList> = {
           // [LINK NEW SCREEN ABOVE] < Needed for linking screen          // End
         },
       },
-      Modal: 'modal',
+      Notification: 'Notification',
       NotFound: '*',
     },
   },

@@ -16,7 +16,7 @@ import { ColorSchemeName, Pressable } from 'react-native';
 
 import Colors from 'src/utils/constants/Colors';
 import useColorScheme from 'src/utils/hooks/useColorScheme';
-import ModalScreen from 'src/app/screens/ModalScreen';
+import { Notification } from 'src/app/components/Notification/Loadable';
 import NotFoundScreen from 'src/app/screens/NotFoundScreen';
 import { Markets } from 'src/app/screens/Markets/Loadable';
 import News from 'src/app/screens/News';
@@ -122,7 +122,7 @@ function BottomTabNavigator() {
           },
           headerRight: () => (
             <Pressable
-              onPress={() => navigation.navigate('Modal')}
+              onPress={() => navigation.navigate('Notification')}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}
@@ -137,7 +137,7 @@ function BottomTabNavigator() {
           ),
           headerLeft: () => (
             <Pressable
-              onPress={() => navigation.navigate('Modal')}
+              onPress={() => navigation.navigate('Notification')}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}
@@ -204,7 +204,13 @@ function RootNavigator() {
         options={{ title: 'Oops!' }}
       />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Screen
+          options={{
+            headerTitle: 'Notification',
+          }}
+          name="Notification"
+          component={Notification}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );
