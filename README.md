@@ -72,7 +72,27 @@ npm install
 ```
 
 
-## First Screen
+## Screens you will see
+
+### Markets Screen Light
+
+![market light](https://github.com/Humed-Muhammad/investSky-test/blob/master/src/assets/images/lightMain.jpg)
+### Markets Screen Dark
+
+![market dark](https://github.com/Humed-Muhammad/investSky-test/blob/master/src/assets/images/darkMain.jpg)
+
+### Portfolio Screen Light
+
+![portfolio light](https://github.com/Humed-Muhammad/investSky-test/blob/master/src/assets/images/lightPort.jpg)
+
+### Portfolio Screen Dark
+
+![portfolio dark](https://github.com/Humed-Muhammad/investSky-test/blob/master/src/assets/images/darkPort.jpg)
+
+
+### Stocks Search
+
+![Stock Search](https://github.com/Humed-Muhammad/investSky-test/blob/master/src/assets/images/lightSearch.jpg)
 
 # Building for production
 
