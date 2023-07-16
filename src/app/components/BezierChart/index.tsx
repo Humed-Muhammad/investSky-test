@@ -2,6 +2,7 @@ import React from 'react';
 import { LineChart } from 'react-native-chart-kit';
 import { Dimensions } from 'react-native';
 import { colors } from 'src/utils/constants/themeColors';
+import { useTheme } from 'src/utils/theme';
 import { Box } from '../Core';
 
 interface Props {
@@ -19,6 +20,7 @@ export const BezierChart = ({
   color,
   strokeWidth,
 }: Props) => {
+  const { colorMode } = useTheme();
   return (
     <Box>
       <LineChart
@@ -34,11 +36,15 @@ export const BezierChart = ({
         height={height || 220}
         yAxisLabel={'Rs'}
         chartConfig={{
-          backgroundGradientFrom: 'white',
-          backgroundGradientTo: 'white',
+          backgroundColor: colorMode === 'light' ? 'white' : 'black',
+          backgroundGradientFrom: colorMode === 'light' ? 'white' : 'black',
+          backgroundGradientTo: colorMode === 'light' ? 'white' : 'black',
           decimalPlaces: 2, // optional, defaults to 2dp
           strokeWidth: strokeWidth || 3,
-          color: () => color || colors.gray[700],
+          color: () =>
+            !color && colorMode === 'light'
+              ? colors.gray[700]
+              : color || 'white',
           style: {
             borderRadius: 16,
             paddingRight: 0,

@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 import { View } from 'src/app/components/Themed';
-import { Text } from '../components/Core';
+import { Container, Text } from '../components/Core';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,14 +22,18 @@ const styles = StyleSheet.create({
 
 export default function News() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>News</Text>
+    <Container height="100%" bg="background">
+      <Text color="text" style={styles.title}>
+        News
+      </Text>
       <View
         style={styles.separator}
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <Text variant="h2">Coming Soon</Text>
-    </View>
+      <Text color="text" variant="h2">
+        Coming Soon
+      </Text>
+    </Container>
   );
 }

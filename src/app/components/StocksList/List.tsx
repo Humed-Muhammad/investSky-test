@@ -8,10 +8,12 @@ import { useAppDispatch } from 'src/utils/hooks/redux';
 import { useLinkTo } from '@react-navigation/native';
 import { useStockPricesFetcher } from 'src/app/service';
 import { colors } from 'src/utils/constants/themeColors';
+import { useTheme } from 'src/utils/theme';
 import { Box, Flex, Text } from '../Core';
 import { BezierChart } from '../BezierChart/Loadable';
 
 export const List = (item: IStocksType) => {
+  const { colorMode } = useTheme();
   const { actions } = usePortfolioSlice();
   const { data } = useStockPricesFetcher(item?.id);
   const dispatch = useAppDispatch();
@@ -35,14 +37,14 @@ export const List = (item: IStocksType) => {
     >
       <Flex
         borderBottomWidth={1}
-        borderColor="gray.100"
+        borderColor={colorMode === 'light' ? 'gray.100' : 'gray.700'}
         flexDirection="row"
         alignItems="center"
         justifyContent="space-between"
-        height={75}
+        height={80}
       >
         <Box width="40%" my={2}>
-          <Text variant="h5" fontFamily="Poppins_700Bold">
+          <Text color="text" variant="h5" fontFamily="Poppins_700Bold">
             {stockSymbol}
           </Text>
           <Text variant="h6" color="gray.400">
@@ -57,7 +59,7 @@ export const List = (item: IStocksType) => {
           strokeWidth={2}
         />
         <Flex alignItems="flex-end" width="30%">
-          <Text variant="h5" fontFamily="Poppins_700Bold">
+          <Text color="text" variant="h5" fontFamily="Poppins_700Bold">
             {currencyFormat(currentPrice)}
           </Text>
           <Text color={percentageGain < 0 ? 'error' : 'success'} variant="h6">
