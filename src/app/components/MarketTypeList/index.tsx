@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { FlatList, SafeAreaView, Dimensions, Animated } from 'react-native';
 import { colors } from 'src/utils/constants/themeColors';
 import { Container, Text } from '../Core';
-import { useMarketList } from '../../screens/Markets/service';
+import { useMarketList } from '../../service';
 import { ICategoryTypes, IStocksConfig } from '../../screens/Markets/types';
 
 interface Props {
