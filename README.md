@@ -27,6 +27,30 @@ Open to contributers, lets make this boilerplate the go to go for any expo proje
 
 ## How to run the application
 
+### Clone the project
+- Run the following command
+```cmd
+git clone https://github.com/Humed-Muhammad/investSky-test
+```
+- Make sure you have expo-cli if not run the following command
+
+```cmd
+npm install -g expo-cli
+```
+- The CD to project
+
+```cmd
+cd investSky-test
+```
+
+```cmd
+yarn 
+
+or 
+
+npm install
+```
+
 ### For android
 
 ```cmd
@@ -46,6 +70,9 @@ Open to contributers, lets make this boilerplate the go to go for any expo proje
 
   nmp run ios
 ```
+
+
+## First Screen
 
 # Building for production
 
