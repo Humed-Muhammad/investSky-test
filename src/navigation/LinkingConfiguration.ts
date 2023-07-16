@@ -20,7 +20,7 @@ const linking: LinkingOptions<RootStackParamList> = {
               Markets: 'Markets',
             },
           },
-          TabTwo: {
+          News: {
             screens: {
               News: 'News',
             },

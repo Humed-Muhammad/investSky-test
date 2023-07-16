@@ -159,7 +159,7 @@ function BottomTabNavigator() {
         })}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="News"
         component={News}
         options={{
           title: 'News',

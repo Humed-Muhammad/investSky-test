@@ -7,11 +7,11 @@ import { lightTheme } from './lightTheme';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 
 export const useTheme = () => {
-  const themeMode = useAppSelector(state => state?.defaultLayout?.themeMode);
-  const theme = useAppSelector(state => state?.defaultLayout?.theme);
   const dispatch = useAppDispatch();
   const { actions } = useDefaultLayoutSlice();
 
+  const themeMode = useAppSelector(state => state?.defaultLayout?.themeMode);
+  const theme = useAppSelector(state => state?.defaultLayout?.theme);
   const [colorMode, setColorMode] = useState<ColorSchemeName>(themeMode);
   const handleThemeChange = (value: ColorSchemeName) => {
     setColorMode(value);
