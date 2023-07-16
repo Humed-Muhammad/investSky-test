@@ -1,6 +1,8 @@
 # expo-boilerplate
 
-This boilerplate is I an expo based react native boilerplate and template.
+## Created By Humed Muhammad Essie
+
+This boilerplate is  Created By expo based react native boilerplate and template generator.
 
 It has some scaffolding using generators to help you speed up your development and come with pre configure features listed below:-
 
@@ -22,3 +24,74 @@ It has some scaffolding using generators to help you speed up your development a
 
 # Contribution 
 Open to contributers, lets make this boilerplate the go to go for any expo projects. 
+
+## How to run the application
+
+### For android
+
+```cmd
+  yarn android
+
+  or 
+
+  nmp run android
+```
+
+### For IOS
+
+```cmd
+  yarn ios
+
+  or 
+
+  nmp run ios
+```
+
+# Building for production
+
+## 1. Prerequisites
+
+## A. Clone the project
+- Run the following command
+```cmd
+git clone https://github.com/Humed-Muhammad/investSky-test
+```
+- Make sure you have expo-cli if not run the following command
+
+```cmd
+npm install -g expo-cli
+```
+- The CD to project
+
+```cmd
+cd investSky-test
+```
+
+## B. Expo Account
+- You can sign up at https://expo.dev/signup.
+
+## 2. Login to expo account
+
+### Install the latest EAS CLI
+
+```cmd
+npm install -g eas-cli
+```
+then 
+
+```cmd
+eas login
+```
+
+## 3. Configure the project
+To configure an iOS or an Android project for EAS Build, run the following command:
+
+```cmd
+eas build:configure
+```
+
+## 4. Build for Preview
+
+```cmd
+eas build -p android --profile preview
+```
