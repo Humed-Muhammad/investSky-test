@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
-import EditScreenInfo from 'src/app/components/EditScreenInfo';
-import { Text, View } from 'src/app/components/Themed';
+import { View } from 'src/app/components/Themed';
+import { Text } from '../components/Core';
 
 const styles = StyleSheet.create({
   container: {
@@ -29,7 +29,7 @@ export default function News() {
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
-      <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
+      <Text variant="h2">Coming Soon</Text>
     </View>
   );
 }

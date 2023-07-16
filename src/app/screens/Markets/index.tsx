@@ -13,7 +13,7 @@ import {
 import { Box, Container, Flex, Text } from '../../components/Core';
 import { MarketTypeList } from '../../components/MarketTypeList/Loadable';
 import { IStocksConfig } from './types';
-import { useStockFetcher } from './service';
+import { useStockFetcher } from '../../service';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -23,7 +23,7 @@ export function Markets() {
     categoryId: '',
   });
 
-  const { isLoading } = useStockFetcher(
+  const { isLoading, data } = useStockFetcher(
     stocksConfig.categoryId,
     stocksConfig.fetch,
   );
@@ -63,8 +63,9 @@ export function Markets() {
               bg={colors.primary}
               width="100%"
               height={220}
+              zIndex={1}
             >
-              <Box>
+              <Box zIndex={1}>
                 <Text
                   my={1}
                   variant="h1"
@@ -75,19 +76,22 @@ export function Markets() {
                 </Text>
                 <Search />
               </Box>
+
               <MarketTypeList
                 stocksConfig={stocksConfig}
                 setStocksConfig={setStocksConfig}
               />
             </Flex>
-            <Flex flexGrow={1} width="100%">
-              {isLoading ? (
-                <Box mt={6}>
-                  <ActivityIndicator size="large" />
-                </Box>
-              ) : (
-                <StocksList stocksConfig={stocksConfig} />
-              )}
+            <Flex width="100%">
+              <ScrollView>
+                {isLoading ? (
+                  <Box mt={6}>
+                    <ActivityIndicator size="large" />
+                  </Box>
+                ) : (
+                  <StocksList data={data!} />
+                )}
+              </ScrollView>
             </Flex>
           </Container>
         </ScrollView>
