@@ -137,7 +137,6 @@ function BottomTabNavigator() {
           ),
           headerLeft: () => (
             <Pressable
-              onPress={() => navigation.navigate('Notification')}
               style={({ pressed }) => ({
                 opacity: pressed ? 0.5 : 1,
               })}
