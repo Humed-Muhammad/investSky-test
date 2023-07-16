@@ -17,12 +17,12 @@ const linking: LinkingOptions<RootStackParamList> = {
         screens: {
           Markets: {
             screens: {
-              Markets: 'one',
+              Markets: 'Markets',
             },
           },
           TabTwo: {
             screens: {
-              TabTwoScreen: 'two',
+              News: 'News',
             },
           },
 
@@ -31,8 +31,12 @@ const linking: LinkingOptions<RootStackParamList> = {
               Login: 'Login',
             },
           },
-          // [LINK NEW SCREEN ABOVE] < Needed for linking screen
-          // End
+          Portfolio: {
+            screens: {
+              Portfolio: 'Portfolio',
+            },
+          },
+          // [LINK NEW SCREEN ABOVE] < Needed for linking screen          // End
         },
       },
       Modal: 'modal',
