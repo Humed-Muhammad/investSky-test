@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Feather } from '@expo/vector-icons';
-import { Box, Input } from '../Core';
+import { useStockSearch } from 'src/app/service';
+import { ActivityIndicator, ScrollView } from 'react-native';
+import { Box, Container, Input, Text } from '../Core';
+import { StocksList } from '../StocksList/Loadable';
 
 export const Search = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const { data, isLoading } = useStockSearch(searchTerm);
+
   return (
     <Box mb={2} position="relative">
       <Feather
@@ -23,7 +30,39 @@ export const Search = () => {
         pl={'60px'}
         width="auto"
         placeholderTextColor="white"
+        onChangeText={text => setSearchTerm(text)}
       />
+      {searchTerm ? (
+        <Container
+          style={{
+            zIndex: 1,
+            elevation: 3,
+          }}
+          position="absolute"
+          width="100%"
+          top={55}
+          bg="white"
+        >
+          <ScrollView
+            style={{
+              width: '100%',
+            }}
+          >
+            {data?.items?.length ? <StocksList data={data!} /> : null}
+            {isLoading ? (
+              <Box my={3}>
+                <ActivityIndicator />
+              </Box>
+            ) : (
+              !data?.items?.length && (
+                <Text my={3} variant="h4">
+                  Result not found
+                </Text>
+              )
+            )}
+          </ScrollView>
+        </Container>
+      ) : null}
     </Box>
   );
 };
