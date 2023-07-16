@@ -1,4 +1,8 @@
-import { PressableProps } from 'react-native';
+import {
+  PressableProps,
+  TextInputAndroidProps,
+  TextInputIOSProps,
+} from 'react-native';
 import {
   ColorProps,
   LayoutProps,
@@ -111,7 +115,9 @@ export interface InputProps
     JustifySelfProps,
     BorderProps,
     PositionProps,
-    BorderRadiusProps {
+    BorderRadiusProps,
+    TextInputAndroidProps,
+    TextInputIOSProps {
   variant?: 'outlined' | 'filled';
   valid?: boolean;
   tabIndex?: number;

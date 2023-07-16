@@ -35,6 +35,8 @@ const variants = {
 };
 
 export const Text = styled.Text<TextProps>`
+  margin: 0px;
+  padding: 0px;
   ${compose(
     color,
     layout,

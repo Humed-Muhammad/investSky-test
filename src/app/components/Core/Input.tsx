@@ -12,9 +12,9 @@ import {
 } from 'styled-system';
 import { colors } from 'src/utils/constants/themeColors';
 import { lightTheme } from 'src/utils/theme/lightTheme';
-import { ButtonProps } from './types';
+import { InputProps } from './types';
 
-export const Input = styled.TextInput<ButtonProps>`
+export const Input = styled.TextInput<InputProps>`
   background-color: ${colors.inputBg};
   padding: ${lightTheme.spaces['8']};
   border-radius: ${lightTheme.spaces[6]}
