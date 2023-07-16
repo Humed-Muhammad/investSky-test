@@ -42,3 +42,16 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
   >;
 
 export type DateType = '1D' | '7D' | '1M' | '3M' | '1Y';
+
+export interface IStockPricesResponse {
+  id: string;
+  collectionId: string;
+  collectionName: string;
+  created: string;
+  data: number[];
+  expand: {};
+  stockId: string;
+  updated: string;
+}
+
+export type IStockPrices = IStockPricesResponse[];

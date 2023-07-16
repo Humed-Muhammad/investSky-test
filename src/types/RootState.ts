@@ -1,6 +1,7 @@
 import { IFarmerDetails } from 'src/app/screens/todo/slice/types';
 import { DefaultLayoutState } from 'src/app/screens/defaultLayout/slice/types';
 
+import { PortfolioState } from 'src/app/screens/Portfolio/slice/types';
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 
 /* 
@@ -8,7 +9,8 @@ import { DefaultLayoutState } from 'src/app/screens/defaultLayout/slice/types';
   You have to declare them here manually
 */
 export interface RootState {
-  farmerDetails: IFarmerDetails;
-  defaultLayout: DefaultLayoutState;
+  farmerDetails?: IFarmerDetails;
+  defaultLayout?: DefaultLayoutState;
+  portfolio?: PortfolioState;
   // [INSERT NEW REDUCER KEY ABOVE] < Needed for generating containers seamlessly
 }

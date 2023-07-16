@@ -18,9 +18,10 @@ import Colors from 'src/utils/constants/Colors';
 import useColorScheme from 'src/utils/hooks/useColorScheme';
 import ModalScreen from 'src/app/screens/ModalScreen';
 import NotFoundScreen from 'src/app/screens/NotFoundScreen';
-import Markets from 'src/app/screens/Markets';
-import TabTwoScreen from 'src/app/screens/TabTwoScreen';
+import { Markets } from 'src/app/screens/Markets/Loadable';
+import News from 'src/app/screens/News';
 
+import { Portfolio } from 'src/app/screens/Portfolio/Loadable';
 // [IMPORT NEW COMPONENT SCREEN ABOVE] < Needed for importing screen
 
 import {
@@ -29,6 +30,7 @@ import {
   RootTabScreenProps,
 } from 'src/utils/types/types';
 import { useTheme } from 'src/utils/theme';
+import { Container } from 'src/app/components/Core';
 import LinkingConfiguration from './LinkingConfiguration';
 
 /**
@@ -65,6 +67,50 @@ function BottomTabNavigator() {
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}
     >
+      <BottomTab.Screen
+        name="Portfolio"
+        component={Portfolio}
+        options={({ navigation }: RootTabScreenProps<'Portfolio'>) => ({
+          title: 'Portfolio',
+          headerTitle: '',
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="pie-chart" color={color} />
+          ),
+
+          headerLeft: () => (
+            <Container
+              borderWidth={1}
+              borderColor="gray.400"
+              marginLeft={4}
+              marginTop={5}
+              borderRadius={18}
+              padding={1}
+              height={35}
+              width={35}
+            >
+              <Pressable
+                onPress={() => navigation.navigate('Markets')}
+                style={({ pressed }) => ({
+                  opacity: pressed ? 0.5 : 1,
+                })}
+              >
+                <FontAwesome
+                  name="angle-left"
+                  size={20}
+                  color={theme?.colors.gray[900]}
+                  // style={{ marginLeft: 15 }}
+                />
+              </Pressable>
+            </Container>
+          ),
+          headerStyle: {
+            backgroundColor: 'white',
+            shadowColor: 'transparent', // this covers iOS
+            elevation: 0, // this covers Android
+          },
+        })}
+      />
+
       <BottomTab.Screen
         name="Markets"
         component={Markets}
@@ -114,10 +160,12 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="TabTwo"
-        component={TabTwoScreen}
+        component={News}
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          title: 'News',
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="newspaper-o" color={color} />
+          ),
         }}
       />
 
@@ -129,6 +177,7 @@ function BottomTabNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       /> */}
+
       {/* // [INSERT NEW SCREEN COMPONENT ABOVE] < Needed for generating screen */}
 
       {/** @End  */}
