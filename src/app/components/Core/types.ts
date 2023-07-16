@@ -1,3 +1,4 @@
+import { PressableProps } from 'react-native';
 import {
   ColorProps,
   LayoutProps,
@@ -47,12 +48,11 @@ export interface ButtonProps
     AlignItemsProps,
     FlexDirectionProps,
     FlexboxProps,
-    TypographyProps {
+    TypographyProps,
+    PressableProps {
   variant?: 'primary' | 'secondary' | 'ghost' | 'normal';
   loading?: boolean;
   children?: any;
-  onClick?: () => void;
-  type?: string;
   disabled?: boolean;
 }
 

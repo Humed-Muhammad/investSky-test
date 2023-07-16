@@ -20,7 +20,7 @@ import { ButtonProps } from './types';
 import { Text } from './Text';
 import { Box } from './Box';
 
-export const ButtonBase = styled.TouchableOpacity<ButtonProps>`
+export const ButtonBase = styled.Pressable<ButtonProps>`
   background-color: ${colors.primary};
   padding: 10px;
   border-radius: 5px;
