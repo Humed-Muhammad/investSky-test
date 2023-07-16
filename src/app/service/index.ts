@@ -26,9 +26,6 @@ export const useStockFetcher = (
   const { data, error, isLoading, isValidating, mutate } = useSWR(
     !fetch ? null : [`stocks`, categoryId],
     fetcher,
-    {
-      refreshInterval: 5000,
-    },
   );
 
   return { data, error, isLoading, isValidating, mutate };
