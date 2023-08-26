@@ -10,12 +10,12 @@ import {
   zIndex,
   position,
 } from 'styled-system';
-import { colors } from 'src/utils/constants/themeColors';
+// import { colors } from 'src/utils/constants/themeColors';
 import { lightTheme } from 'src/utils/theme/lightTheme';
 import { InputProps } from './types';
 
 export const Input = styled.TextInput<InputProps>`
-  background-color: ${colors.inputBg};
+  background-color: secondary;
   padding: ${lightTheme.spaces['8']};
   border-radius: ${lightTheme.spaces[6]}
   width: 300px;

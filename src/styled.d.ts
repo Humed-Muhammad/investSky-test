@@ -20,13 +20,10 @@ declare module 'styled-components/native' {
       full: string;
     };
     colors: {
-      white: string;
       text: string;
-      color: string;
       primary: string;
       secondary: string;
       background: string;
-      transparent: string;
       gray: {
         50: string;
         100: string;
@@ -40,10 +37,9 @@ declare module 'styled-components/native' {
         900: string;
       };
 
-      warning: string;
       success: string;
-      info: string;
       error: string;
+      accent: string;
     };
     spaces: {
       2: string;

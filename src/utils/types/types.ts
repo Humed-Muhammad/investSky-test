@@ -31,7 +31,7 @@ export type RootTabParamList = {
   News: undefined;
   Login?: undefined;
   Notification: undefined;
-  Portfolio?: undefined;
+  Home?: undefined;
   // [INSERT NEW SCREEN KEY ABOVE] < Needed for generating screen
 };
 

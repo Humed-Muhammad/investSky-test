@@ -2,17 +2,10 @@ import { useFonts, Poppins_700Bold } from '@expo-google-fonts/poppins';
 import * as SplashScreen from 'expo-splash-screen';
 import { useCallback, useState } from 'react';
 import { Search } from 'src/app/components/Search/Loadable';
-import { StocksList } from 'src/app/components/StocksList/Loadable';
-import {
-  ActivityIndicator,
-  KeyboardAvoidingView,
-  Platform,
-  ScrollView,
-} from 'react-native';
+import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { Box, Container, Flex, Text } from '../../components/Core';
 import { MarketTypeList } from '../../components/MarketTypeList/Loadable';
 import { IStocksConfig } from './types';
-import { useStockFetcher } from '../../service';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -21,11 +14,6 @@ export function Markets() {
     fetch: false,
     categoryId: '',
   });
-
-  const { isLoading, data } = useStockFetcher(
-    stocksConfig.categoryId,
-    stocksConfig.fetch,
-  );
 
   const [fontsLoaded] = useFonts({
     Poppins_700Bold,
@@ -42,7 +30,7 @@ export function Markets() {
   }
 
   return (
-    <Flex bg="background" width="100%" height="100%">
+    <Flex width="100%" height="100%">
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         enabled={false}
@@ -80,17 +68,6 @@ export function Markets() {
                 stocksConfig={stocksConfig}
                 setStocksConfig={setStocksConfig}
               />
-            </Flex>
-            <Flex width="100%">
-              <ScrollView>
-                {isLoading ? (
-                  <Box mt={6}>
-                    <ActivityIndicator size="large" />
-                  </Box>
-                ) : (
-                  <StocksList data={data!} />
-                )}
-              </ScrollView>
             </Flex>
           </Container>
         </ScrollView>

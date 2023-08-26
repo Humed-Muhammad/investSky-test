@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome, Octicons } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   NavigationContainer,
@@ -14,14 +14,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName, Pressable } from 'react-native';
 
-import Colors from 'src/utils/constants/Colors';
-import useColorScheme from 'src/utils/hooks/useColorScheme';
 import { Notification } from 'src/app/components/Notification/Loadable';
 import NotFoundScreen from 'src/app/screens/NotFoundScreen';
 import { Markets } from 'src/app/screens/Markets/Loadable';
 import News from 'src/app/screens/News';
 
-import { Portfolio } from 'src/app/screens/Portfolio/Loadable';
+// import { Home } from 'src/app/screens/Home/Loadable';
 // [IMPORT NEW COMPONENT SCREEN ABOVE] < Needed for importing screen
 
 import {
@@ -30,8 +28,9 @@ import {
   RootTabScreenProps,
 } from 'src/utils/types/types';
 import { useTheme } from 'src/utils/theme';
-import { Container, Flex } from 'src/app/components/Core';
+import { Flex } from 'src/app/components/Core';
 import { ThemeController } from 'src/app/components/LightDarkThem';
+import { Home } from 'src/app/screens/Home/Loadable';
 import LinkingConfiguration from './LinkingConfiguration';
 
 /**
@@ -47,7 +46,7 @@ function TabBarIcon(props: {
   name: React.ComponentProps<typeof FontAwesome>['name'];
   color: string;
 }) {
-  return <FontAwesome size={20} style={{ marginBottom: -3 }} {...props} />;
+  return <FontAwesome style={{ marginBottom: -3 }} {...props} />;
 }
 
 /**
@@ -57,53 +56,30 @@ function TabBarIcon(props: {
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
-
   const { theme } = useTheme();
-
   return (
     <BottomTab.Navigator
-      initialRouteName="Markets"
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,
+      initialRouteName="Home"
+      sceneContainerStyle={{
+        backgroundColor: theme.colors.background,
+        borderStyle: 'solid',
+        borderColor: theme.colors.accent,
       }}
     >
       <BottomTab.Screen
-        name="Portfolio"
-        component={Portfolio}
-        options={({ navigation }: RootTabScreenProps<'Portfolio'>) => ({
-          title: 'Portfolio',
+        name="Home"
+        component={Home}
+        options={({ navigation }: RootTabScreenProps<'Home'>) => ({
+          title: navigation.isFocused() ? 'Home' : '',
           headerTitle: '',
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="pie-chart" color={color} />
+            <FontAwesome
+              size={navigation.isFocused() ? 28 : 25}
+              name="home"
+              color={navigation.isFocused() ? theme.colors.primary : color}
+            />
           ),
 
-          headerLeft: () => (
-            <Container
-              borderWidth={1}
-              borderColor={theme.colors.text}
-              marginLeft={4}
-              marginTop={5}
-              borderRadius={18}
-              padding={1}
-              height={35}
-              width={35}
-            >
-              <Pressable
-                onPress={() => navigation.navigate('Markets')}
-                style={({ pressed }) => ({
-                  opacity: pressed ? 0.5 : 1,
-                })}
-              >
-                <FontAwesome
-                  name="angle-left"
-                  size={20}
-                  color={theme?.colors.text}
-                  // style={{ marginLeft: 15 }}
-                />
-              </Pressable>
-            </Container>
-          ),
           headerStyle: {
             backgroundColor: theme.colors.background,
             shadowColor: 'transparent', // this covers iOS
@@ -117,9 +93,15 @@ function BottomTabNavigator() {
         component={Markets}
         options={({ navigation }: RootTabScreenProps<'Markets'>) => ({
           headerTitle: '',
-          title: 'Markets',
+          title: navigation.isFocused() ? 'Scheduled' : '',
           tabBarIcon: ({ color }) => {
-            return <Octicons name="arrow-switch" size={20} color={color} />;
+            return (
+              <FontAwesome
+                name="calendar"
+                size={navigation.isFocused() ? 28 : 25}
+                color={navigation.isFocused() ? theme.colors.primary : color}
+              />
+            );
           },
           headerRight: () => (
             <Flex flexDirection="row">
@@ -131,45 +113,54 @@ function BottomTabNavigator() {
               >
                 <FontAwesome
                   name="bell-o"
-                  size={20}
-                  color={theme?.colors.white}
+                  size={18}
                   style={{ marginRight: 15 }}
+                  color={theme.colors.gray[50]}
                 />
               </Pressable>
-              <ThemeController />
+              <ThemeController color={theme.colors.gray[50]} />
             </Flex>
           ),
-          headerLeft: () => (
-            <Pressable
-              style={({ pressed }) => ({
-                opacity: pressed ? 0.5 : 1,
-              })}
-            >
-              <FontAwesome
-                name="align-left"
-                size={20}
-                color={theme?.colors.white}
-                style={{ marginLeft: 15 }}
-              />
-            </Pressable>
-          ),
+          // headerLeft: () => (
+          //   <Pressable
+          //     style={({ pressed }) => ({
+          //       opacity: pressed ? 0.5 : 1,
+          //     })}
+          //   >
+          //     <FontAwesome
+          //       name="align-left"
+          //       size={navigation.isFocused() ? 28 : 25} color={theme?.colors.white}
+          //       style={{ marginLeft: 15 }}
+          //     />
+          //   </Pressable>
+          // ),
           headerStyle: {
             backgroundColor: theme?.colors.primary,
             shadowColor: 'transparent', // this covers iOS
             elevation: 0, // this covers Android
           },
-          headerTintColor: theme?.colors.white,
         })}
       />
       <BottomTab.Screen
         name="News"
         component={News}
-        options={{
-          title: 'News',
+        options={({ navigation }: RootTabScreenProps<'News'>) => ({
+          title: navigation.isFocused() ? 'Nearby' : '',
+          headerTitle: '',
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="newspaper-o" color={color} />
+            <FontAwesome
+              name="map-o"
+              size={navigation.isFocused() ? 28 : 25}
+              color={navigation.isFocused() ? theme.colors.primary : color}
+            />
           ),
-        }}
+
+          headerStyle: {
+            // backgroundColor: theme.colors.background,
+            shadowColor: 'transparent', // this covers iOS
+            elevation: 0, // this covers Android
+          },
+        })}
       />
 
       {/* <BottomTab.Screen

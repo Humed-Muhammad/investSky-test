@@ -10,10 +10,9 @@ import {
 import { createInjectorsEnhancer } from 'redux-injectors';
 import { Task } from 'redux-saga';
 import { createReducer } from './reducers';
+import { api } from './service';
 
 export function configureAppStore() {
-  // Create the store with saga middleware
-
   const enhancers = [
     createInjectorsEnhancer({
       createReducer,
@@ -29,6 +28,7 @@ export function configureAppStore() {
       ...getDefaultMiddleware({
         serializableCheck: false,
       }),
+      api.middleware,
     ],
     devTools: process.env.NODE_ENV !== 'production',
     enhancers,

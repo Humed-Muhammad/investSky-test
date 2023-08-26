@@ -6,7 +6,7 @@
 
 import { lazyLoad } from 'src/utils/loadable';
 
-export const Markets = lazyLoad(
+export const Home = lazyLoad(
   () => import('./index'),
-  module => module.Markets,
+  module => module.Home,
 );

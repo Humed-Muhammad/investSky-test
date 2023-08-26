@@ -10,14 +10,26 @@
  */
 export const Colors = {
   // Example colors:
-  transparent: 'rgba(0,0,0,0)',
-  inputBackground: '#FFFFFF',
-  white: '#ffffff',
-  text: '#212529',
-  primary: '#3366FF',
-  success: '#74d815',
-  error: '#FF3838',
-  warning: '#F5CE45',
+
+  primary: '#3A75C4',
+  secondary: '#FFD700',
+  background: '#FFFFFF',
+  text: '#333333',
+  accent: '#FF5722',
+  success: '#28A745',
+  error: '#DC3545',
+  gray: {
+    50: '#fafafa',
+    100: '#f5f5f5',
+    200: '#eeeeee',
+    300: '#e0e0e0',
+    400: '#bdbdbd',
+    500: '#9e9e9e',
+    600: '#757575',
+    700: '#616161',
+    800: '#424242',
+    900: '#212121',
+  },
 };
 
 export const NavigationColors = {

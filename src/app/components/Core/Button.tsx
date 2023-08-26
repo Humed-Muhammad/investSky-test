@@ -13,7 +13,7 @@ import {
   flexBasis,
   flexDirection,
 } from 'styled-system';
-import { colors } from 'src/utils/constants/themeColors';
+// import { colors } from 'src/utils/constants/themeColors';
 import { ReactNode } from 'react';
 import { ActivityIndicator } from 'react-native';
 import { ButtonProps } from './types';
@@ -21,7 +21,6 @@ import { Text } from './Text';
 import { Box } from './Box';
 
 export const ButtonBase = styled.Pressable<ButtonProps>`
-  background-color: ${colors.primary};
   padding: 10px;
   border-radius: 5px;
   width: auto;
@@ -32,12 +31,8 @@ export const ButtonBase = styled.Pressable<ButtonProps>`
     typography,
     variant({
       variants: {
-        primary: {
-          backgroundColor: colors.primary,
-        },
-        secondary: {
-          backgroundColor: colors.secondary,
-        },
+        primary: {},
+        secondary: {},
         ghost: {
           backgroundColor: 'transparent',
         },

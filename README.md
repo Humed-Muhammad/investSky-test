@@ -94,11 +94,11 @@ npm install
 
 ![market dark](https://github.com/Humed-Muhammad/investSky-test/blob/master/src/assets/images/darkMain.jpg)
 
-### Portfolio Screen Light
+### Home Screen Light
 
 ![portfolio light](https://github.com/Humed-Muhammad/investSky-test/blob/master/src/assets/images/lightPort.jpg)
 
-### Portfolio Screen Dark
+### Home Screen Dark
 
 ![portfolio dark](https://github.com/Humed-Muhammad/investSky-test/blob/master/src/assets/images/darkPort.jpg)
 

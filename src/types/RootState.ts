@@ -1,6 +1,6 @@
 import { DefaultLayoutState } from 'src/app/screens/defaultLayout/slice/types';
 
-import { PortfolioState } from 'src/app/screens/Portfolio/slice/types';
+import { PortfolioState } from 'src/app/screens/Home/slice/types';
 // [IMPORT NEW CONTAINERSTATE ABOVE] < Needed for generating containers seamlessly
 
 /* 

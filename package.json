@@ -18,7 +18,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --watchAll",
-    "generate": "plop --plopfile gen/generators/plopfile.ts",
+    "gen": "plop --plopfile gen/generators/plopfile.ts",
     "prettify": "prettier --write",
     "extract-messages": "i18next-scanner --config=internals/extractMessages/i18next-scanner.config.js"
   },

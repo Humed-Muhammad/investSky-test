@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 
 export default function News() {
   return (
-    <Container height="100%" bg="background">
+    <Container height="100%">
       <Text color="text" style={styles.title}>
         News
       </Text>

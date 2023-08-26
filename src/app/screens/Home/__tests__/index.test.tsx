@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 
-import { Portfolio } from '..';
+import { Home } from '..';
 
-
-describe('<Portfolio  />', () => {
+describe('<Home  />', () => {
   it('should match snapshot', () => {
-    const loadingIndicator = render(<Portfolio />);
+    const loadingIndicator = render(<Home />);
     expect(loadingIndicator.container.firstChild).toMatchSnapshot();
   });
 });

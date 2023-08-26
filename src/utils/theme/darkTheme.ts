@@ -5,10 +5,12 @@ export const darkTheme: DefaultTheme = {
   ...lightTheme,
   colors: {
     ...lightTheme.colors,
-    text: '#FFF',
-    background: '#000',
-    primary: '#000',
-    secondary: '#F48675',
-    success: '#C0EF42',
+    primary: '#152E4D',
+    secondary: '#FFC700',
+    background: '#1E1E1E',
+    text: '#F8F8F8',
+    accent: '#FF4500',
+    success: '#28A745',
+    error: '#DC3545',
   },
 };

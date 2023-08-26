@@ -6,12 +6,12 @@ import { useAppDispatch } from 'src/utils/hooks/redux';
 import { useDefaultLayoutSlice } from 'src/app/screens/defaultLayout/slice';
 import { Flex } from '../Core';
 
-export const ThemeController = () => {
-  const { theme, colorMode } = useTheme();
+export const ThemeController = ({ color }: { color: string }) => {
+  const { colorMode } = useTheme();
   const dispatch = useAppDispatch();
   const { actions } = useDefaultLayoutSlice();
   return (
-    <Flex flexDirection="row">
+    <Flex flexDirection="row" style={{ marginRight: 15 }}>
       {colorMode === 'light' ? (
         <Pressable
           onPress={() => dispatch(actions.changeThemeMode('dark'))}
@@ -19,12 +19,7 @@ export const ThemeController = () => {
             opacity: pressed ? 0.5 : 1,
           })}
         >
-          <FontAwesome
-            name="moon-o"
-            size={20}
-            color={theme?.colors.white}
-            style={{ marginRight: 15 }}
-          />
+          <FontAwesome color={color} name="moon-o" size={18} />
         </Pressable>
       ) : (
         <Pressable
@@ -33,12 +28,7 @@ export const ThemeController = () => {
             opacity: pressed ? 0.5 : 1,
           })}
         >
-          <FontAwesome
-            name="sun-o"
-            size={20}
-            color={theme?.colors.white}
-            style={{ marginRight: 15 }}
-          />
+          <FontAwesome color={color} name="sun-o" size={17} />
         </Pressable>
       )}
     </Flex>

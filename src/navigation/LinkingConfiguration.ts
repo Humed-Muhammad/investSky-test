@@ -31,9 +31,9 @@ const linking: LinkingOptions<RootStackParamList> = {
               Login: 'Login',
             },
           },
-          Portfolio: {
+          Home: {
             screens: {
-              Portfolio: 'Portfolio',
+              Home: 'Home',
             },
           },
           // [LINK NEW SCREEN ABOVE] < Needed for linking screen          // End

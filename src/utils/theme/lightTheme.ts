@@ -1,9 +1,9 @@
 import { DefaultTheme } from 'styled-components/native';
-import { colors } from '../constants/themeColors';
-import { fonts } from './variables';
+
+import { fonts, Colors } from './variables';
 
 export const lightTheme: DefaultTheme = {
-  colors,
+  colors: Colors,
   spaces: {
     2: '2px',
     4: '4px',
