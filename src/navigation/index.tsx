@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   NavigationContainer,
@@ -20,6 +20,7 @@ import { Markets } from 'src/app/screens/Markets/Loadable';
 import News from 'src/app/screens/News';
 
 // import { Home } from 'src/app/screens/Home/Loadable';
+import { Profile } from 'src/app/screens/Profile/Loadable';
 // [IMPORT NEW COMPONENT SCREEN ABOVE] < Needed for importing screen
 
 import {
@@ -62,21 +63,31 @@ function BottomTabNavigator() {
       initialRouteName="Home"
       sceneContainerStyle={{
         backgroundColor: theme.colors.background,
-        borderStyle: 'solid',
-        borderColor: theme.colors.accent,
       }}
     >
       <BottomTab.Screen
         name="Home"
         component={Home}
         options={({ navigation }: RootTabScreenProps<'Home'>) => ({
-          title: navigation.isFocused() ? 'Home' : '',
+          title: !navigation.isFocused() ? 'Home' : '',
           headerTitle: '',
           tabBarIcon: ({ color }) => (
             <FontAwesome
               size={navigation.isFocused() ? 28 : 25}
               name="home"
-              color={navigation.isFocused() ? theme.colors.primary : color}
+              color={navigation.isFocused() ? theme.colors.text : color}
+              style={
+                navigation.isFocused()
+                  ? {
+                      position: 'absolute',
+                      bottom: 25,
+                      backgroundColor: theme.colors.secondary,
+                      borderRadius: 100,
+                      padding: 10,
+                      elevation: 5,
+                    }
+                  : {}
+              }
             />
           ),
 
@@ -99,7 +110,7 @@ function BottomTabNavigator() {
               <FontAwesome
                 name="calendar"
                 size={navigation.isFocused() ? 28 : 25}
-                color={navigation.isFocused() ? theme.colors.primary : color}
+                color={navigation.isFocused() ? theme.colors.text : color}
               />
             );
           },
@@ -151,7 +162,7 @@ function BottomTabNavigator() {
             <FontAwesome
               name="map-o"
               size={navigation.isFocused() ? 28 : 25}
-              color={navigation.isFocused() ? theme.colors.primary : color}
+              color={navigation.isFocused() ? theme.colors.text : color}
             />
           ),
 
@@ -172,6 +183,27 @@ function BottomTabNavigator() {
         }}
       /> */}
 
+      <BottomTab.Screen
+        name="Profile"
+        component={Profile}
+        options={({ navigation }: RootTabScreenProps<'Profile'>) => ({
+          title: navigation.isFocused() ? 'Nearby' : '',
+          headerTitle: '',
+          tabBarIcon: ({ color }) => (
+            <Ionicons
+              size={navigation.isFocused() ? 28 : 25}
+              name="person-outline"
+              color={navigation.isFocused() ? theme.colors.text : color}
+            />
+          ),
+
+          headerStyle: {
+            // backgroundColor: theme.colors.background,
+            shadowColor: 'transparent', // this covers iOS
+            elevation: 0, // this covers Android
+          },
+        })}
+      />
       {/* // [INSERT NEW SCREEN COMPONENT ABOVE] < Needed for generating screen */}
 
       {/** @End  */}

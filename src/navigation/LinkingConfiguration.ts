@@ -36,11 +36,15 @@ const linking: LinkingOptions<RootStackParamList> = {
               Home: 'Home',
             },
           },
-          // [LINK NEW SCREEN ABOVE] < Needed for linking screen          // End
+          Profile: {
+            screens: {
+              Profile: 'Profile',
+            },
+          },
+          // [LINK NEW SCREEN ABOVE] < Needed for linking screen        },
+          Notification: 'Notification',
         },
       },
-      Notification: 'Notification',
-      NotFound: '*',
     },
   },
 };

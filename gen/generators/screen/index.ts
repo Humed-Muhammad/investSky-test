@@ -1,85 +1,85 @@
-import { Actions, PlopGeneratorConfig } from "node-plop";
-import inquirer from "inquirer";
+import { Actions, PlopGeneratorConfig } from 'node-plop';
+import inquirer from 'inquirer';
 
-import { pathExists } from "../utils";
-import { baseGeneratorPath } from "../paths";
-import path from "path";
+import { pathExists } from '../utils';
+import { baseGeneratorPath } from '../paths';
+import path from 'path';
 
-inquirer.registerPrompt("directory", require("inquirer-directory"));
+inquirer.registerPrompt('directory', require('inquirer-directory'));
 
 export enum ScreenProptNames {
-  screenName = "screenName",
-  path = "path",
-  wantMemo = "wantMemo",
-  wantStyledComponents = "wantStyledScreens",
-  wantTranslations = "wantTranslations",
-  wantLoadable = "wantLoadable",
-  wantTests = "wantTests",
+  screenName = 'screenName',
+  path = 'path',
+  wantMemo = 'wantMemo',
+  wantStyledComponents = 'wantStyledScreens',
+  wantTranslations = 'wantTranslations',
+  wantLoadable = 'wantLoadable',
+  wantTests = 'wantTests',
 }
 
 type Answers = { [P in ScreenProptNames]: string };
 
 export const rootNavigationTypesPath = path.join(
   __dirname,
-  "../../../src/utils/types/types.tsx"
+  '../../../src/utils/types/types.ts',
 );
 export const rootNavigationScreenPath = path.join(
   __dirname,
-  "../../../src/navigation/index.tsx"
+  '../../../src/navigation/index.tsx',
 );
 
 export const rootNavigationLinkingPath = path.join(
   __dirname,
-  "../../../src/navigation/LinkingConfiguration.ts"
+  '../../../src/navigation/LinkingConfiguration.ts',
 );
 
 export const screenGenerator: PlopGeneratorConfig = {
-  description: "Add a screen",
+  description: 'Add a screen',
   prompts: [
     {
-      type: "input",
+      type: 'input',
       name: ScreenProptNames.screenName,
-      message: "What should it be called?",
+      message: 'What should it be called?',
     },
     {
-      type: "directory",
+      type: 'directory',
       name: ScreenProptNames.path,
-      message: "Where do you want it to be created?",
+      message: 'Where do you want it to be created?',
       basePath: `${baseGeneratorPath}`,
     } as any,
     {
-      type: "confirm",
+      type: 'confirm',
       name: ScreenProptNames.wantMemo,
       default: false,
-      message: "Do you want to wrap your screen in React.memo?",
+      message: 'Do you want to wrap your screen in React.memo?',
     },
     {
-      type: "confirm",
+      type: 'confirm',
       name: ScreenProptNames.wantStyledComponents,
       default: true,
-      message: "Do you want to use styled-components?",
+      message: 'Do you want to use styled-components?',
     },
     {
-      type: "confirm",
+      type: 'confirm',
       name: ScreenProptNames.wantTranslations,
       default: false,
       message:
-        "Do you want i18n translations (i.e. will this screen use text)?",
+        'Do you want i18n translations (i.e. will this screen use text)?',
     },
     {
-      type: "confirm",
+      type: 'confirm',
       name: ScreenProptNames.wantLoadable,
       default: false,
-      message: "Do you want to load the screen asynchronously?",
+      message: 'Do you want to load the screen asynchronously?',
     },
     {
-      type: "confirm",
+      type: 'confirm',
       name: ScreenProptNames.wantTests,
       default: false,
-      message: "Do you want to have tests?",
+      message: 'Do you want to have tests?',
     },
   ],
-  actions: (data) => {
+  actions: data => {
     const answers = data as Answers;
 
     const screenPath = `${baseGeneratorPath}/${answers.path}/{{properCase ${ScreenProptNames.screenName}}}`;
@@ -90,73 +90,73 @@ export const screenGenerator: PlopGeneratorConfig = {
     }
     const actions: Actions = [
       {
-        type: "add",
+        type: 'add',
         path: `${screenPath}/index.tsx`,
-        templateFile: "./screen/index.tsx.hbs",
+        templateFile: './screen/index.tsx.hbs',
         abortOnFail: true,
       },
     ];
 
     if (answers.wantLoadable) {
       actions.push({
-        type: "add",
+        type: 'add',
         path: `${screenPath}/Loadable.ts`,
-        templateFile: "./screen/loadable.ts.hbs",
+        templateFile: './screen/loadable.ts.hbs',
         abortOnFail: true,
       });
     }
 
     if (answers.wantTests) {
       actions.push({
-        type: "add",
+        type: 'add',
         path: `${screenPath}/__tests__/index.test.tsx`,
-        templateFile: "./screen/index.test.tsx.hbs",
+        templateFile: './screen/index.test.tsx.hbs',
         abortOnFail: true,
       });
     }
 
     actions.push({
-      type: "modify",
+      type: 'modify',
       path: `${rootNavigationTypesPath}`,
       pattern: new RegExp(/.*\/\/.*\[INSERT NEW SCREEN KEY ABOVE\].+\n/),
-      templateFile: "./screen/appendScreenType.hbs",
+      templateFile: './screen/appendScreenType.hbs',
       abortOnFail: true,
     });
     actions.push({
-      type: "modify",
+      type: 'modify',
       path: `${rootNavigationScreenPath}`,
       pattern: new RegExp(/.*\/\/.*\[INSERT NEW SCREEN COMPONENT ABOVE\].+\n/),
-      templateFile: "./screen/appendScreenComponent.hbs",
+      templateFile: './screen/appendScreenComponent.hbs',
       abortOnFail: true,
     });
     actions.push({
-      type: "modify",
+      type: 'modify',
       path: `${rootNavigationScreenPath}`,
       pattern: new RegExp(/.*\/\/.*\[IMPORT NEW COMPONENT SCREEN ABOVE\].+\n/),
-      templateFile: "./screen/importScreenComponent.hbs",
+      templateFile: './screen/importScreenComponent.hbs',
       abortOnFail: true,
     });
     actions.push({
-      type: "modify",
+      type: 'modify',
       path: `${rootNavigationLinkingPath}`,
       pattern: new RegExp(/.*\/\/.*\[LINK NEW SCREEN ABOVE\].+\n/),
-      templateFile: "./screen/appendScreenInLinking.hbs",
+      templateFile: './screen/appendScreenInLinking.hbs',
       abortOnFail: true,
     });
     actions.push({
-      type: "prettify",
+      type: 'prettify',
       data: { path: `${actualScreenPath}/**` },
     });
     actions.push({
-      type: "prettify",
+      type: 'prettify',
       data: { path: `${rootNavigationTypesPath}/**` },
     });
     actions.push({
-      type: "prettify",
+      type: 'prettify',
       data: { path: `${rootNavigationScreenPath}/**` },
     });
     actions.push({
-      type: "prettify",
+      type: 'prettify',
       data: { path: `${rootNavigationLinkingPath}/**` },
     });
 
