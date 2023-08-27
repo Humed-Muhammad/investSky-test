@@ -20,9 +20,9 @@ const linking: LinkingOptions<RootStackParamList> = {
               Markets: 'Markets',
             },
           },
-          News: {
+          Schedule: {
             screens: {
-              News: 'News',
+              Schedule: 'Schedule',
             },
           },
 
@@ -42,9 +42,9 @@ const linking: LinkingOptions<RootStackParamList> = {
             },
           },
           // [LINK NEW SCREEN ABOVE] < Needed for linking screen        },
-          Notification: 'Notification',
         },
       },
+      Notification: 'Notification',
     },
   },
 };

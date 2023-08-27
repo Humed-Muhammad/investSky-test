@@ -3,7 +3,6 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   NavigationContainer,
@@ -17,22 +16,20 @@ import { ColorSchemeName, Pressable } from 'react-native';
 import { Notification } from 'src/app/components/Notification/Loadable';
 import NotFoundScreen from 'src/app/screens/NotFoundScreen';
 import { Markets } from 'src/app/screens/Markets/Loadable';
-import News from 'src/app/screens/News';
+import Schedule from 'src/app/screens/Schedule';
 
 // import { Home } from 'src/app/screens/Home/Loadable';
 import { Profile } from 'src/app/screens/Profile/Loadable';
 // [IMPORT NEW COMPONENT SCREEN ABOVE] < Needed for importing screen
 
-import {
-  RootStackParamList,
-  RootTabParamList,
-  RootTabScreenProps,
-} from 'src/utils/types/types';
+import { RootStackParamList, RootTabParamList } from 'src/utils/types/types';
 import { useTheme } from 'src/utils/theme';
-import { Flex } from 'src/app/components/Core';
-import { ThemeController } from 'src/app/components/LightDarkThem';
 import { Home } from 'src/app/screens/Home/Loadable';
+import { Flex } from 'src/app/components/Core';
+import { FontAwesome } from '@expo/vector-icons';
+import { ThemeController } from 'src/app/components/LightDarkThem';
 import LinkingConfiguration from './LinkingConfiguration';
+import { tabBarOptions } from './tabBarOptions';
 
 /**
  * A root stack navigator is often used for displaying modals on top of all other content.
@@ -43,12 +40,6 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 /**
  * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
  */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome style={{ marginBottom: -3 }} {...props} />;
-}
 
 /**
  * A bottom tab navigator displays tab buttons on the bottom of the display to switch screens.
@@ -58,6 +49,7 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
   const { theme } = useTheme();
+
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
@@ -68,56 +60,31 @@ function BottomTabNavigator() {
       <BottomTab.Screen
         name="Home"
         component={Home}
-        options={({ navigation }: RootTabScreenProps<'Home'>) => ({
-          title: !navigation.isFocused() ? 'Home' : '',
-          headerTitle: '',
-          tabBarIcon: ({ color }) => (
-            <FontAwesome
-              size={navigation.isFocused() ? 28 : 25}
-              name="home"
-              color={navigation.isFocused() ? theme.colors.text : color}
-              style={
-                navigation.isFocused()
-                  ? {
-                      position: 'absolute',
-                      bottom: 25,
-                      backgroundColor: theme.colors.secondary,
-                      borderRadius: 100,
-                      padding: 10,
-                      elevation: 5,
-                    }
-                  : {}
-              }
-            />
-          ),
-
-          headerStyle: {
-            backgroundColor: theme.colors.background,
-            shadowColor: 'transparent', // this covers iOS
-            elevation: 0, // this covers Android
-          },
-        })}
+        options={screenProps =>
+          tabBarOptions<'Home'>({
+            name: 'home',
+            screenProps,
+            screenName: 'Home',
+            theme,
+          })
+        }
       />
 
       <BottomTab.Screen
         name="Markets"
         component={Markets}
-        options={({ navigation }: RootTabScreenProps<'Markets'>) => ({
-          headerTitle: '',
-          title: navigation.isFocused() ? 'Scheduled' : '',
-          tabBarIcon: ({ color }) => {
-            return (
-              <FontAwesome
-                name="calendar"
-                size={navigation.isFocused() ? 28 : 25}
-                color={navigation.isFocused() ? theme.colors.text : color}
-              />
-            );
-          },
+        options={screenProps => ({
+          ...tabBarOptions<'Markets'>({
+            screenProps,
+            name: 'calendar',
+            screenName: 'Markets',
+            theme,
+            showHeaderStyle: true,
+          }),
           headerRight: () => (
             <Flex flexDirection="row">
               <Pressable
-                onPress={() => navigation.navigate('Notification')}
+                onPress={() => screenProps.navigation.navigate('Notification')}
                 style={({ pressed }) => ({
                   opacity: pressed ? 0.5 : 1,
                 })}
@@ -132,46 +99,19 @@ function BottomTabNavigator() {
               <ThemeController color={theme.colors.gray[50]} />
             </Flex>
           ),
-          // headerLeft: () => (
-          //   <Pressable
-          //     style={({ pressed }) => ({
-          //       opacity: pressed ? 0.5 : 1,
-          //     })}
-          //   >
-          //     <FontAwesome
-          //       name="align-left"
-          //       size={navigation.isFocused() ? 28 : 25} color={theme?.colors.white}
-          //       style={{ marginLeft: 15 }}
-          //     />
-          //   </Pressable>
-          // ),
-          headerStyle: {
-            backgroundColor: theme?.colors.primary,
-            shadowColor: 'transparent', // this covers iOS
-            elevation: 0, // this covers Android
-          },
         })}
       />
       <BottomTab.Screen
-        name="News"
-        component={News}
-        options={({ navigation }: RootTabScreenProps<'News'>) => ({
-          title: navigation.isFocused() ? 'Nearby' : '',
-          headerTitle: '',
-          tabBarIcon: ({ color }) => (
-            <FontAwesome
-              name="map-o"
-              size={navigation.isFocused() ? 28 : 25}
-              color={navigation.isFocused() ? theme.colors.text : color}
-            />
-          ),
-
-          headerStyle: {
-            // backgroundColor: theme.colors.background,
-            shadowColor: 'transparent', // this covers iOS
-            elevation: 0, // this covers Android
-          },
-        })}
+        name="Schedule"
+        component={Schedule}
+        options={screenProps =>
+          tabBarOptions<'Schedule'>({
+            name: 'map-o',
+            screenProps,
+            screenName: 'Schedule',
+            theme,
+          })
+        }
       />
 
       {/* <BottomTab.Screen
@@ -186,23 +126,14 @@ function BottomTabNavigator() {
       <BottomTab.Screen
         name="Profile"
         component={Profile}
-        options={({ navigation }: RootTabScreenProps<'Profile'>) => ({
-          title: navigation.isFocused() ? 'Nearby' : '',
-          headerTitle: '',
-          tabBarIcon: ({ color }) => (
-            <Ionicons
-              size={navigation.isFocused() ? 28 : 25}
-              name="person-outline"
-              color={navigation.isFocused() ? theme.colors.text : color}
-            />
-          ),
-
-          headerStyle: {
-            // backgroundColor: theme.colors.background,
-            shadowColor: 'transparent', // this covers iOS
-            elevation: 0, // this covers Android
-          },
-        })}
+        options={screenProps =>
+          tabBarOptions<'Profile'>({
+            name: 'user-o',
+            screenProps,
+            screenName: 'Profile',
+            theme,
+          })
+        }
       />
       {/* // [INSERT NEW SCREEN COMPONENT ABOVE] < Needed for generating screen */}
 

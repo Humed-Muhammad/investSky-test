@@ -1,6 +1,20 @@
 // styled.d.ts
 import 'styled-components/native';
 
+export type FontWeightType =
+  | 'bold'
+  | 'normal'
+  | '100'
+  | '200'
+  | '300'
+  | '400'
+  | '500'
+  | '600'
+  | '700'
+  | '800'
+  | '900'
+  | undefined;
+
 declare module 'styled-components/native' {
   export interface DefaultTheme {
     sizes: {
@@ -64,15 +78,15 @@ declare module 'styled-components/native' {
       '3xl': number;
     };
     fontWeights: {
-      100: number;
-      200: number;
-      300: number;
-      400: number;
-      500: number;
-      600: number;
-      700: number;
-      800: number;
-      900: number;
+      100: FontWeightType;
+      200: FontWeightType;
+      300: FontWeightType;
+      400: FontWeightType;
+      500: FontWeightType;
+      600: FontWeightType;
+      700: FontWeightType;
+      800: FontWeightType;
+      900: FontWeightType;
     };
     fonts: {
       poppins: string;

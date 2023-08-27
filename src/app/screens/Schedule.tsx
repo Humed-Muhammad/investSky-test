@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function News() {
+export default function Schedule() {
   return (
     <Container height="100%">
       <Text color="text" style={styles.title}>
-        News
+        Schedule
       </Text>
       <View
         style={styles.separator}
