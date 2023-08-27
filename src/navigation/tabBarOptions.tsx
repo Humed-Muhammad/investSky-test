@@ -37,9 +37,9 @@ export const tabBarOptions = <T extends keyof RootTabParamList>({
     },
     tabBarStyle: {
       backgroundColor: theme?.colors.gray[900],
-      height: 65,
+      height: 70,
       marginHorizontal: 10,
-      borderRadius: 5,
+      borderRadius: 60,
       elevation: 2,
       paddingTop: 5,
       paddingBottom: 5,
