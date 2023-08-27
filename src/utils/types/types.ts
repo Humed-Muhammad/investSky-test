@@ -21,6 +21,7 @@ export type RootStackParamList = {
   Login: undefined;
   Notification: undefined;
   NotFound: undefined;
+  Welcome?: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
@@ -33,6 +34,8 @@ export type RootTabParamList = {
   Notification: undefined;
   Home?: undefined;
   Profile?: undefined;
+  Welcome?: undefined;
+
   // [INSERT NEW SCREEN KEY ABOVE] < Needed for generating screen
 };
 

@@ -44,6 +44,11 @@ const linking: LinkingOptions<RootStackParamList> = {
           // [LINK NEW SCREEN ABOVE] < Needed for linking screen        },
         },
       },
+      Welcome: {
+        screens: {
+          Welcome: 'Welcome',
+        },
+      },
       Notification: 'Notification',
     },
   },

@@ -28,6 +28,7 @@ import { Home } from 'src/app/screens/Home/Loadable';
 import { Flex } from 'src/app/components/Core';
 import { FontAwesome } from '@expo/vector-icons';
 import { ThemeController } from 'src/app/components/LightDarkThem';
+import { Welcome } from 'src/app/screens/Welcome/Loadable';
 import LinkingConfiguration from './LinkingConfiguration';
 import { tabBarOptions } from './tabBarOptions';
 
@@ -135,6 +136,7 @@ function BottomTabNavigator() {
           })
         }
       />
+
       {/* // [INSERT NEW SCREEN COMPONENT ABOVE] < Needed for generating screen */}
 
       {/** @End  */}
@@ -144,12 +146,23 @@ function BottomTabNavigator() {
 
 function RootNavigator() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        contentStyle: {
+          backgroundColor: 'white',
+        },
+      }}
+    >
       {/* <Stack.Screen
         name="Login"
         component={Login}
         options={{ headerShown: false }}
       /> */}
+      <Stack.Screen
+        name="Welcome"
+        component={Welcome}
+        options={{ headerTitle: 'Welcome' }}
+      />
       <Stack.Screen
         name="Root"
         component={BottomTabNavigator}
