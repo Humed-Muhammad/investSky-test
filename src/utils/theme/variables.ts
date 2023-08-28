@@ -18,6 +18,7 @@ export const Colors = {
   accent: '#FF5722',
   success: '#28A745',
   error: '#DC3545',
+  tabBarIconBg: '#616161',
   gray: {
     50: '#fafafa',
     100: '#f5f5f5',

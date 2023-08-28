@@ -12,8 +12,8 @@ export const tabBarOptions = <T extends keyof RootTabParamList>({
   theme,
 }: TabBarOptionsProps<T>): BottomTabNavigationOptions => {
   const tabBarLabelStyle: StyleProp<TextStyle> = {
-    color: theme.colors.background,
-    fontWeight: theme.fontWeights[700],
+    color: theme.colors.text,
+    fontWeight: theme.fontWeights[800],
   };
 
   return {
@@ -36,10 +36,12 @@ export const tabBarOptions = <T extends keyof RootTabParamList>({
       elevation: 0, // this covers Android
     },
     tabBarStyle: {
-      backgroundColor: theme?.colors.gray[900],
+      // backgroundColor: theme?.colors.gray[900],
       height: 70,
-      marginHorizontal: 10,
-      borderRadius: 60,
+      // marginBottom: 10,
+      // borderRadius: 10,
+      // width: '95%',
+      // alignSelf: 'center',
       elevation: 2,
       paddingTop: 5,
       paddingBottom: 5,

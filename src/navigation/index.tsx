@@ -29,6 +29,7 @@ import { Flex } from 'src/app/components/Core';
 import { FontAwesome } from '@expo/vector-icons';
 import { ThemeController } from 'src/app/components/LightDarkThem';
 import { Welcome } from 'src/app/screens/Welcome/Loadable';
+import { Login } from 'src/app/screens/Login/Loadable';
 import LinkingConfiguration from './LinkingConfiguration';
 import { tabBarOptions } from './tabBarOptions';
 
@@ -56,6 +57,8 @@ function BottomTabNavigator() {
       initialRouteName="Home"
       sceneContainerStyle={{
         backgroundColor: theme.colors.background,
+        display: 'flex',
+        justifyContent: 'center',
       }}
     >
       <BottomTab.Screen
@@ -153,15 +156,15 @@ function RootNavigator() {
         },
       }}
     >
-      {/* <Stack.Screen
-        name="Login"
-        component={Login}
-        options={{ headerShown: false }}
-      /> */}
       <Stack.Screen
         name="Welcome"
         component={Welcome}
         options={{ headerTitle: 'Welcome' }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Root"

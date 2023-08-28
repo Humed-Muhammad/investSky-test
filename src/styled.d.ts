@@ -50,7 +50,7 @@ declare module 'styled-components/native' {
         800: string;
         900: string;
       };
-
+      tabBarIconBg: string;
       success: string;
       error: string;
       accent: string;

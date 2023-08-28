@@ -29,7 +29,7 @@ export default function AnimatedTabBarIcon({
   const style = useAnimatedStyle(() => {
     if (isFocused) {
       return {
-        backgroundColor: withTiming(theme.colors.text, config),
+        backgroundColor: withTiming(theme.colors.tabBarIconBg, config),
         borderRadius: withTiming(100, config),
         elevation: withTiming(5, config),
       };

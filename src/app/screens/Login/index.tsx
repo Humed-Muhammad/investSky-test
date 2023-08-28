@@ -4,46 +4,61 @@
  *
  */
 import * as React from 'react';
-import { Button, Container, Input, Text } from 'src/app/components/Core';
+import {
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+} from 'react-native';
+import { Button, Container, Text } from 'src/app/components/Core';
+import { PhoneNumberInput } from 'src/app/components/PhoneNumberInput';
 import { RootTabScreenProps } from 'src/utils/types/types';
 
 export function Login({ navigation }: RootTabScreenProps<'Login'>) {
   return (
-    <Container bg="white" height="100%">
-      <Text
-        bg="primary"
-        color="white"
-        p={2}
-        borderRadius={2}
-        justifySelf="flex-start"
-        my={2}
-        variant="h1"
+    <Container bg="white" width="100%" height="100%">
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        enabled={false}
+        style={{
+          width: '100%',
+        }}
       >
-        Invest Sky Login
-      </Text>
-      <Text my={2} variant="h3">
-        Welcome back
-      </Text>
-      <Input
-        placeholder="Email"
-        bg="gray.100"
-        border={1}
-        borderColor="gray.300"
-        my={2}
-      />
-      <Input
-        placeholder="Password"
-        secureTextEntry
-        bg="gray.100"
-        border={1}
-        borderColor="gray.300"
-        mb={2}
-      />
-      <Text mb={2}>Don't have an account yet?</Text>
+        <ScrollView>
+          <Container alignItems="flex-start" width="100%">
+            <Text
+              color="primary"
+              justifySelf="flex-start"
+              variant="h1"
+              fontFamily="PoppinsBold"
+            >
+              Welcome!
+            </Text>
 
-      <Button width="300px" variant="secondary" color="white">
-        Login
-      </Button>
+            <Image
+              source={require('src/assets/images/carWasher.jpg')}
+              style={{
+                resizeMode: 'contain',
+                height: 200,
+                width: '80%',
+              }}
+            />
+
+            <Container width="100%">
+              <PhoneNumberInput />
+              <Button
+                width="85%"
+                bg="primary"
+                color="white"
+                borderRadius="2"
+                onPress={() => navigation.navigate('Root')}
+              >
+                Sign In
+              </Button>
+            </Container>
+          </Container>
+        </ScrollView>
+      </KeyboardAvoidingView>
     </Container>
   );
 }

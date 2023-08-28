@@ -1,13 +1,10 @@
-import { useFonts, Poppins_700Bold } from '@expo-google-fonts/poppins';
-import * as SplashScreen from 'expo-splash-screen';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { Search } from 'src/app/components/Search/Loadable';
 import { KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
+import { useLoadFonts } from 'src/utils/hooks/useLoadFonts';
 import { Box, Container, Flex, Text } from '../../components/Core';
 import { MarketTypeList } from '../../components/MarketTypeList/Loadable';
 import { IStocksConfig } from './types';
-
-SplashScreen.preventAutoHideAsync();
 
 export function Markets() {
   const [stocksConfig, setStocksConfig] = useState<IStocksConfig>({
@@ -15,15 +12,7 @@ export function Markets() {
     categoryId: '',
   });
 
-  const [fontsLoaded] = useFonts({
-    Poppins_700Bold,
-  });
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
+  const [fontsLoaded] = useLoadFonts();
 
   if (!fontsLoaded) {
     return null;
@@ -39,11 +28,7 @@ export function Markets() {
         }}
       >
         <ScrollView>
-          <Container
-            alignItems="flex-start"
-            width="100%"
-            onLayout={onLayoutRootView}
-          >
+          <Container alignItems="flex-start" width="100%">
             <Flex
               justifyContent="space-between"
               p={3}
@@ -57,7 +42,8 @@ export function Markets() {
                   my={1}
                   variant="h1"
                   color="white"
-                  fontFamily="Poppins_700Bold"
+                  fontFamily="Poppins"
+                  fontWeight="800"
                 >
                   Markets
                 </Text>
