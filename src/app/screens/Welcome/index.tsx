@@ -7,16 +7,13 @@ import * as React from 'react';
 import { Image, View } from 'react-native';
 import { RootTabScreenProps } from 'src/utils/types/types';
 import { useLocalization } from 'src/locales';
-import { Button, Text } from 'src/app/components/Core';
 import { useLoadFonts } from 'src/utils/hooks/useLoadFonts';
-import { FontAwesome } from '@expo/vector-icons';
-import { useTheme } from 'src/utils/theme';
+import { Button, Text } from 'react-native-paper';
 
 interface Props {}
 
 export function Welcome({ navigation }: RootTabScreenProps<'Welcome'>) {
   const { i18n } = useLocalization();
-  const { theme } = useTheme();
 
   const [fontsLoaded] = useLoadFonts();
   if (!fontsLoaded) return null;
@@ -40,41 +37,35 @@ export function Welcome({ navigation }: RootTabScreenProps<'Welcome'>) {
         }}
       />
       <Text
-        variant="h1"
-        textAlign="center"
-        width="80%"
-        fontFamily="PoppinsBold"
-        // fontWeight="bold"
-        color="gray.800"
+        // variant="titleLarge"
+        style={{
+          textAlign: 'center',
+          width: '80%',
+          fontFamily: 'PoppinsBold',
+          fontSize: 26,
+        }}
       >
         Give a new look to your car
       </Text>
       <Text
-        variant="h4"
-        textAlign="center"
-        width="80%"
-        fontFamily="Poppins"
-        // fontWeight="bold"
-        color="gray.800"
+        style={{
+          textAlign: 'center',
+          width: '80%',
+          fontFamily: 'Poppins',
+        }}
       >
         Your sparkling clean car is just a touch away!
       </Text>
       <Button
-        icon={
-          <FontAwesome
-            name="arrow-right"
-            color={theme.colors.background}
-            size={18}
-          />
-        }
-        marginTop={100}
-        width={70}
-        backgroundColor="text"
+        mode="outlined"
+        icon="arrow-right"
         onPress={() => navigation.navigate('Login')}
-        // style={{
-        //   transform: 'rotate(180deg)',
-        // }}
-      />
+        style={{
+          marginTop: 140,
+        }}
+      >
+        Next
+      </Button>
     </View>
   );
 }

@@ -5,6 +5,8 @@ import useCachedResources from 'src/utils/hooks/useCachedResources';
 import { Provider } from 'react-redux';
 import { configureAppStore } from 'src/store/configureStore';
 import DefaultLayout from 'src/app/screens/defaultLayout';
+import { PaperProvider } from 'react-native-paper';
+import { theme } from 'src/utils/theme/paperTheme';
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -16,7 +18,9 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <Provider store={store}>
-        <DefaultLayout />
+        <PaperProvider theme={theme}>
+          <DefaultLayout />
+        </PaperProvider>
       </Provider>
     </SafeAreaProvider>
   );

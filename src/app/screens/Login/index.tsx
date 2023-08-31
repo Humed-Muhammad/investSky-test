@@ -10,8 +10,9 @@ import {
   Platform,
   ScrollView,
 } from 'react-native';
-import { Button, Container, Text } from 'src/app/components/Core';
-import { PhoneNumberInput } from 'src/app/components/PhoneNumberInput';
+import { Button, Text, TextInput } from 'react-native-paper';
+import { Container } from 'src/app/components/Core';
+import { Colors } from 'src/utils/theme/variables';
 import { RootTabScreenProps } from 'src/utils/types/types';
 
 export function Login({ navigation }: RootTabScreenProps<'Login'>) {
@@ -27,10 +28,10 @@ export function Login({ navigation }: RootTabScreenProps<'Login'>) {
         <ScrollView>
           <Container alignItems="flex-start" width="100%">
             <Text
-              color="primary"
-              justifySelf="flex-start"
-              variant="h1"
-              fontFamily="PoppinsBold"
+              style={{
+                fontFamily: 'PoppinsBold',
+                fontSize: 30,
+              }}
             >
               Welcome!
             </Text>
@@ -45,13 +46,31 @@ export function Login({ navigation }: RootTabScreenProps<'Login'>) {
             />
 
             <Container width="100%">
-              <PhoneNumberInput />
+              {/* <PhoneNumberInput /> */}
+              <Text
+                variant="labelLarge"
+                style={{ textAlign: 'left', width: '85%', marginBottom: 10 }}
+              >
+                Sign in with your email only
+              </Text>
+              <TextInput
+                mode="outlined"
+                style={{
+                  width: '85%',
+                  marginBottom: 10,
+                  borderColor: Colors.gray[300],
+                }}
+                placeholder="Your email address"
+              />
               <Button
-                width="85%"
-                bg="primary"
-                color="white"
-                borderRadius="2"
+                rippleColor="gray"
                 onPress={() => navigation.navigate('Root')}
+                mode="contained-tonal"
+                style={{
+                  width: '85%',
+                  borderRadius: 2,
+                  marginBottom: 20,
+                }}
               >
                 Sign In
               </Button>
