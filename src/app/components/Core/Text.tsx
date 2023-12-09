@@ -11,9 +11,11 @@ import {
   position,
 } from 'styled-system';
 import { lightTheme } from 'src/utils/theme/lightTheme';
+import { appColors } from 'src/utils/colors';
+import { Colors } from 'src/utils/theme/variables';
 import { TextProps } from './types';
 
-const variants = {
+const headingVariants = {
   h1: {
     fontSize: lightTheme.headings.h1,
   },
@@ -47,6 +49,10 @@ export const Text = styled.Text<TextProps>`
     position,
     variant({
       variants: {
+        primary: {
+          color: Colors.primary,
+          fontWeight: 500,
+        },
         base: {
           fontSize: lightTheme.fontSizes.md,
           fontWeight: 'normal',
@@ -56,7 +62,31 @@ export const Text = styled.Text<TextProps>`
           whiteSpace: 'nowrap',
           textOverflow: 'ellipsis',
         },
-        ...variants,
+        'list-item': {
+          color: appColors.slateBlue,
+          fontSize: 12,
+          fontStyle: 'normal',
+          fontWeight: 400,
+        },
+        note: {
+          color: '#8E8E93',
+          fontSize: 13,
+          fontStyle: 'normal',
+          fontWeight: 400,
+          textTransform: 'lowercase',
+        },
+        subtitle: {
+          color: '#0F3844',
+          fontSize: 14,
+          fontWeight: '400',
+        },
+        depicted: {
+          textAlign: 'center',
+          fontSize: 12,
+          fontWeight: '500',
+          textTransform: 'uppercase',
+        },
+        ...headingVariants,
       },
     }),
   )};

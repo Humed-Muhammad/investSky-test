@@ -11,7 +11,7 @@ import {
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
+import { ColorSchemeName, Pressable, View } from 'react-native';
 
 import { Notification } from 'src/app/components/Notification/Loadable';
 import NotFoundScreen from 'src/app/screens/NotFoundScreen';
@@ -25,11 +25,12 @@ import { Profile } from 'src/app/screens/Profile/Loadable';
 import { RootStackParamList, RootTabParamList } from 'src/utils/types/types';
 import { useTheme } from 'src/utils/theme';
 import { Home } from 'src/app/screens/Home/Loadable';
-import { Flex } from 'src/app/components/Core';
+import { Box, Flex, Text } from 'src/app/components/Core';
 import { FontAwesome } from '@expo/vector-icons';
 import { ThemeController } from 'src/app/components/LightDarkThem';
 import { Welcome } from 'src/app/screens/Welcome/Loadable';
 import { Login } from 'src/app/screens/Login/Loadable';
+import { Avatar } from 'react-native-paper';
 import LinkingConfiguration from './LinkingConfiguration';
 import { tabBarOptions } from './tabBarOptions';
 
@@ -64,14 +65,47 @@ function BottomTabNavigator() {
       <BottomTab.Screen
         name="Home"
         component={Home}
-        options={screenProps =>
-          tabBarOptions<'Home'>({
+        options={screenProps => ({
+          ...tabBarOptions<'Home'>({
             name: 'home',
             screenProps,
             screenName: 'Home',
             theme,
-          })
-        }
+          }),
+          headerLeft: () => (
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                marginHorizontal: 10,
+              }}
+            >
+              <Avatar.Image
+                size={45}
+                source={require('src/assets/images/profile.webp')}
+                style={{ marginRight: 5 }}
+              />
+              <View style={{ display: 'flex' }}>
+                <Text variant="list-item">Welcome</Text>
+                <Text variant="primary">Humed Essie</Text>
+              </View>
+            </View>
+          ),
+          headerRight: () => (
+            <View
+              style={{
+                display: 'flex',
+                flexDirection: 'row',
+                marginHorizontal: 10,
+              }}
+            >
+              <Box width="half" display="flex" flexDirection="row">
+                <FontAwesome name="search" />
+                <FontAwesome name="bell-o" />
+              </Box>
+            </View>
+          ),
+        })}
       />
 
       <BottomTab.Screen

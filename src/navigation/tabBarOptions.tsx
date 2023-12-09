@@ -14,6 +14,7 @@ export const tabBarOptions = <T extends keyof RootTabParamList>({
   const tabBarLabelStyle: StyleProp<TextStyle> = {
     color: theme.colors.text,
     fontWeight: theme.fontWeights[800],
+    fontSize: 10,
   };
 
   return {
@@ -37,7 +38,7 @@ export const tabBarOptions = <T extends keyof RootTabParamList>({
     },
     tabBarStyle: {
       // backgroundColor: theme?.colors.gray[900],
-      height: 70,
+      height: 60,
       // marginBottom: 10,
       // borderRadius: 10,
       // width: '95%',

@@ -1,0 +1,50 @@
+export const appColors = {
+  primary_main: '#93EB1B',
+  primary_light: '#3CC9A2',
+  primary_dark: '#66AA09',
+  primary_contrastText: '#0F3844',
+  secondary_main: '#0F3844',
+  secondary_light: '#F1736D',
+  secondary_dark: '#F1736D',
+  secondary_contrastText: '#CF8D5A',
+  background_default: '#F5F5F5',
+  background_paper: '#FFFFFF',
+  red: '#E4572E',
+  white: {
+    main: '#02151A',
+    dark: '#FDFFFE',
+  },
+  borderColor: '#D0DFF5',
+  deepIndigo: '#083844',
+  whisperingSky: '#E4ECF9',
+  lightSteelBlue: '#D0D5DD',
+  lightBluishGray: '#D0DFDC',
+  paleGreen: '#ECF5F0',
+  paleBluishWhite: '#E9EEF4',
+  midnightIndigo: '#083844',
+  paleSilver: '#E2E6EA',
+  mintGreen: '#DBFFAA',
+  cadetBlue: '#B0C0C3',
+  alabaster: '#F9F9F9',
+  lavenderBlue: '#F0F1F8',
+  slateBlue: '#8E95AC',
+  darkCyanBlue: '#001E3C',
+  steelGray: '#777B7E',
+};
+
+export const statusColors = {
+  success: {
+    bg: '#D3FBAF',
+    color: '#177F11',
+  },
+  info: { bg: 'rgba(184, 233, 245, 0.43)', color: '#0F3844' },
+  warning: { bg: '#F5EA6E', color: '#0F3844' },
+  error: {
+    bg: '#FEEAEE',
+    color: '#F12A4E',
+  },
+  stale: {
+    bg: '#D3FBAF',
+    color: '#02151A',
+  },
+};

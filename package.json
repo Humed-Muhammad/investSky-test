@@ -20,7 +20,8 @@
     "test": "jest --watchAll",
     "gen": "plop --plopfile gen/generators/plopfile.ts",
     "prettify": "prettier --write",
-    "extract-messages": "i18next-scanner --config=internals/extractMessages/i18next-scanner.config.js"
+    "extract-messages": "i18next-scanner --config=internals/extractMessages/i18next-scanner.config.js",
+    "db": "./backend/pocketbase serve"
   },
   "jest": {
     "preset": "jest-expo"

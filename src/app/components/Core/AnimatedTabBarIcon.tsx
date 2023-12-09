@@ -2,7 +2,6 @@
 import Animated, {
   withTiming,
   useAnimatedStyle,
-  Easing,
 } from 'react-native-reanimated';
 import { StyleSheet } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
@@ -22,8 +21,7 @@ export default function AnimatedTabBarIcon({
   theme,
 }: Props) {
   const config = {
-    duration: 200,
-    easing: Easing.bezier(0.5, 0.01, 0, 1),
+    duration: 10,
   };
 
   const style = useAnimatedStyle(() => {
@@ -46,9 +44,9 @@ export default function AnimatedTabBarIcon({
     <>
       <Animated.View style={[styles.box, style]}>
         <FontAwesome
-          size={isFocused ? 22 : 20}
+          size={isFocused ? 17 : 15}
           name={name}
-          color={isFocused ? theme.colors.secondary : color}
+          color={isFocused ? theme.colors.primary : color}
         />
       </Animated.View>
     </>
@@ -60,7 +58,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 45,
-    width: 45,
+    height: 35,
+    width: 35,
   },
 });

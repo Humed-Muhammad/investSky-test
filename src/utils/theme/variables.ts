@@ -12,13 +12,13 @@ export const Colors = {
   // Example colors:
 
   primary: '#3A75C4',
-  secondary: '#FFD700',
+  secondary: '#8DC90C',
   background: '#FFFFFF',
   text: '#333333',
   accent: '#FF5722',
   success: '#28A745',
   error: '#DC3545',
-  tabBarIconBg: '#616161',
+  tabBarIconBg: 'white',
   gray: {
     50: '#fafafa',
     100: '#f5f5f5',

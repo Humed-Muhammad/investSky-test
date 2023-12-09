@@ -3,6 +3,7 @@ import {
   TextInputAndroidProps,
   TextInputIOSProps,
 } from 'react-native';
+import { DefaultTheme } from 'styled-components/native';
 import {
   ColorProps,
   LayoutProps,
@@ -39,7 +40,6 @@ import {
 
 export interface ButtonProps
   extends ColorProps,
-    LayoutProps,
     TypographyProps,
     SpaceProps,
     PositionProps,
@@ -53,7 +53,8 @@ export interface ButtonProps
     FlexDirectionProps,
     FlexboxProps,
     TypographyProps,
-    PressableProps {
+    PressableProps,
+    ThemeAllSizeTypes {
   variant?: 'primary' | 'secondary' | 'ghost' | 'normal';
   loading?: boolean;
   children?: any;
@@ -65,7 +66,6 @@ export interface BoxProps
     ColorProps,
     PositionProps,
     GridGapProps,
-    LayoutProps,
     FlexBasisProps,
     FlexGrowProps,
     FlexProps,
@@ -80,7 +80,8 @@ export interface BoxProps
     BoxShadowProps,
     BackgroundSizeProps,
     OpacityProps,
-    BackgroundProps {
+    BackgroundProps,
+    ThemeAllSizeTypes {
   transition?: string | Array<string>;
   transform?: string | Array<string>;
   transformOrigin?: string | Array<string>;
@@ -101,9 +102,23 @@ export interface TextProps
     PositionProps,
     MarginProps,
     FontFamilyProps {
-  variant?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'base' | 'ellipsis';
+  variant?:
+    | 'primary'
+    | 'h1'
+    | 'h2'
+    | 'h3'
+    | 'h4'
+    | 'h5'
+    | 'h6'
+    | 'base'
+    | 'ellipsis'
+    | 'subtitle'
+    | 'depicted'
+    | 'note'
+    | 'list-item';
   textOverflow?: string;
   cursor?: string;
+  color?: ThemeColorTypes;
 }
 
 export interface InputProps
@@ -166,4 +181,12 @@ export interface CardProps
     ColorProps,
     AlignItemsProps {
   variant?: 'default' | 'rightBended' | 'dense' | 'medium' | 'radiant';
+}
+
+export type ThemeColorTypes = keyof DefaultTheme['colors'];
+export type ThemeSizeTypes = keyof DefaultTheme['sizes'];
+
+export interface ThemeAllSizeTypes extends LayoutProps {
+  width?: ThemeSizeTypes;
+  height?: ThemeSizeTypes;
 }
